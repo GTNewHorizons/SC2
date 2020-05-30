@@ -24,7 +24,7 @@ group= "vswe.stevescarts" // http://maven.apache.org/guides/mini/guide-naming-co
 archivesBaseName = "StevesCarts"
 
 minecraft {
-    version = "1.7.10-10.13.0.1187"
+    version = "1.7.10-10.13.4.1614"
     assetDir = "eclipse/assets"
 
     replace '${version}', project.version
