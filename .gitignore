@@ -18,3 +18,4 @@ bin
 
 #Ignore gradle logs
 .gradle
+*.bat
