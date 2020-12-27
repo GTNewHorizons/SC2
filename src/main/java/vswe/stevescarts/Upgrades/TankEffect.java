@@ -103,14 +103,14 @@ public abstract class TankEffect extends InventoryEffect {
 			changed = true;
 		}else if(upgrade.tank.getFluid() != null) {
 			if (isNew || oldfluid == null) {
-				upgrade.updateGuiData(con, crafting, id, (short)upgrade.tank.getFluid().fluidID);	
+				upgrade.updateGuiData(con, crafting, id, (short)upgrade.tank.getFluid().getFluidID());	
 				upgrade.updateGuiData(con, crafting, amount1, upgrade.getShortFromInt(true, upgrade.tank.getFluid().amount));	
 				upgrade.updateGuiData(con, crafting, amount2, upgrade.getShortFromInt(false, upgrade.tank.getFluid().amount));	
 				changed = true;
 			}else{
 			
-				if (oldfluid.fluidID != upgrade.tank.getFluid().fluidID) {
-					upgrade.updateGuiData(con, crafting, id, (short)upgrade.tank.getFluid().fluidID);
+				if (oldfluid.getFluidID() != upgrade.tank.getFluid().getFluidID()) {
+					upgrade.updateGuiData(con, crafting, id, (short)upgrade.tank.getFluid().getFluidID());
 					changed = true;
 				}					
 				if (oldfluid.amount != upgrade.tank.getFluid().amount) {

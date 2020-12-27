@@ -225,12 +225,12 @@ public abstract class ModuleTank extends ModuleStorage implements IFluidTank, IT
 	}
 
 	protected void updateDw() {
-		updateShortDw(0, tank.getFluid() == null ? -1 : tank.getFluid().fluidID);
+		updateShortDw(0, tank.getFluid() == null ? -1 : tank.getFluid().getFluidID());
 		updateIntDw(1, tank.getFluid() == null ? -1 : tank.getFluid().amount);	
 	}
 	@Override
 	public void initDw() {
-		addShortDw(0, tank.getFluid() == null ? -1 : tank.getFluid().fluidID);
+		addShortDw(0, tank.getFluid() == null ? -1 : tank.getFluid().getFluidID());
 		addIntDw(1, tank.getFluid() == null ? -1 : tank.getFluid().amount);
 	}
 		

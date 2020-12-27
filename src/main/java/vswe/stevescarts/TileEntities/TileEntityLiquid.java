@@ -401,14 +401,14 @@ public class TileEntityLiquid extends TileEntityManager  implements IFluidHandle
 				changed = true;
 			}else if(tanks[i].getFluid() != null) {
 				if (isNew || con.oldLiquids[i] == null) {
-					updateGuiData(con, crafting, id, (short)tanks[i].getFluid().fluidID);	
+					updateGuiData(con, crafting, id, (short)tanks[i].getFluid().getFluidID());	
 					updateGuiData(con, crafting, amount1, getShortFromInt(true, tanks[i].getFluid().amount));	
 					updateGuiData(con, crafting, amount2, getShortFromInt(false, tanks[i].getFluid().amount));		
 					changed = true;
 				}else{
 				
-					if (con.oldLiquids[i].fluidID != tanks[i].getFluid().fluidID) {
-						updateGuiData(con, crafting, id, (short)tanks[i].getFluid().fluidID);
+					if (con.oldLiquids[i].getFluidID() != tanks[i].getFluid().getFluidID()) {
+						updateGuiData(con, crafting, id, (short)tanks[i].getFluid().getFluidID());
 						changed = true;
 					}					
 					if (con.oldLiquids[i].amount != tanks[i].getFluid().amount) {
