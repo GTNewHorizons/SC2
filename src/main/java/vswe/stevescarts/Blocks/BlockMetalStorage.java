@@ -11,18 +11,16 @@ import vswe.stevescarts.StevesCarts;
 
 public class BlockMetalStorage extends Block implements IBlockBase {
 
-    public BlockMetalStorage()
-    {
+    public BlockMetalStorage() {
         super(Material.iron);
         this.setCreativeTab(StevesCarts.tabsSC2Blocks);
     }
-
     
     @SideOnly(Side.CLIENT)
 	@Override
     public IIcon getIcon(int side, int meta) {
     	meta %= ModItems.storages.icons.length;
-    	
+
     	return ModItems.storages.icons[meta];
     }
     
@@ -32,11 +30,9 @@ public class BlockMetalStorage extends Block implements IBlockBase {
 
     @SideOnly(Side.CLIENT)
 	@Override
-    public void registerBlockIcons(IIconRegister register)
-    {
+    public void registerBlockIcons(IIconRegister register) {
     	//do nothing here
     }
-
 
     private String unlocalizedName;
 
@@ -49,5 +45,6 @@ public class BlockMetalStorage extends Block implements IBlockBase {
     public void setUnlocalizedName(String name) {
         this.unlocalizedName = name;
     }
+
 }
 

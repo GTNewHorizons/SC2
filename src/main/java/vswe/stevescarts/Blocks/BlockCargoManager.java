@@ -1,4 +1,5 @@
 package vswe.stevescarts.Blocks;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,131 +15,110 @@ import vswe.stevescarts.TileEntities.TileEntityCargo;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-public class BlockCargoManager extends BlockContainerBase
-{
 
+public class BlockCargoManager extends BlockContainerBase {
 
-    public BlockCargoManager()
-    {
+    public BlockCargoManager() {
         super(Material.rock);
-		setCreativeTab(StevesCarts.tabsSC2Blocks);	
+        setCreativeTab(StevesCarts.tabsSC2Blocks);    
     }
 
-	
-	private IIcon topIcon;
-	private IIcon botIcon;
-	private IIcon redIcon;
-	private IIcon blueIcon;
-	private IIcon greenIcon;
-	private IIcon yellowIcon;
-	
+    private IIcon topIcon;
+    private IIcon botIcon;
+    private IIcon redIcon;
+    private IIcon blueIcon;
+    private IIcon greenIcon;
+    private IIcon yellowIcon;
+    
     @SideOnly(Side.CLIENT)
-	@Override
-    public IIcon getIcon(int side, int meta)
-    {
-        if (side == 0) {
-			return botIcon;
-		}else if(side == 1) {
-			return topIcon;
-		}else if(side == 2){
-			return yellowIcon;
-		}else if(side == 3){
-			return blueIcon;
-		}else if(side == 4){
-			return greenIcon;
-		}else{
-			return redIcon;
-		}
+    @Override
+    public IIcon getIcon(int side, int meta) {
+        switch (side) {
+        case 0:
+            return botIcon;
+        case 1:
+            return topIcon;
+        case 2:
+            return yellowIcon;
+        case 3:
+            return blueIcon;
+        case 4:
+            return greenIcon;
+        default:
+            return redIcon;
+        }
     }
-	
+    
     @SideOnly(Side.CLIENT)
-	@Override
-    public void registerBlockIcons(IIconRegister register)
-    {
-        topIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "cargo_manager" + "_top");
-		botIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "cargo_manager" + "_bot");
-		redIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "cargo_manager" + "_red");
-		blueIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "cargo_manager" + "_blue");
-		greenIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "cargo_manager" + "_green");
-		yellowIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "cargo_manager" + "_yellow");
-    }	
+    @Override
+    public void registerBlockIcons(IIconRegister register) {
+        topIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":cargo_manager_top");
+        botIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":cargo_manager_bot");
+        redIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":cargo_manager_red");
+        blueIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":cargo_manager_blue");
+        greenIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":cargo_manager_green");
+        yellowIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":cargo_manager_yellow");
+    }    
 
-	@Override
-   public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
-    {
-        TileEntityCargo var7 = (TileEntityCargo)par1World.getTileEntity(par2, par3, par4);
+    @Override
+   public void breakBlock(World world, int x, int y, int z, Block block, int metadata) {
+        TileEntityCargo tileEntity = (TileEntityCargo)world.getTileEntity(x, y, z);
 
-        if (var7 != null)
-        {
-            for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
-            {
-                ItemStack var9 = var7.getStackInSlot(var8);
+        if (tileEntity != null) {
+            for (int slot = 0; slot < tileEntity.getSizeInventory(); ++slot) {
+                ItemStack stack = tileEntity.getStackInSlot(slot);
 
-                if (var9 != null)
-                {
-                    float var10 = par1World.rand.nextFloat() * 0.8F + 0.1F;
-                    float var11 = par1World.rand.nextFloat() * 0.8F + 0.1F;
-                    EntityItem var14;
+                if (stack != null) {
+                    float var10 = world.rand.nextFloat() * 0.8F + 0.1F;
+                    float var11 = world.rand.nextFloat() * 0.8F + 0.1F;
+                    EntityItem droppedStack;
 
-                    for (float var12 = par1World.rand.nextFloat() * 0.8F + 0.1F; var9.stackSize > 0; par1World.spawnEntityInWorld(var14))
-                    {
-                        int var13 = par1World.rand.nextInt(21) + 10;
+                    for (float var12 = world.rand.nextFloat() * 0.8F + 0.1F; stack.stackSize > 0; world.spawnEntityInWorld(droppedStack)) {
+                        int var13 = world.rand.nextInt(21) + 10;
 
-                        if (var13 > var9.stackSize)
-                        {
-                            var13 = var9.stackSize;
+                        if (var13 > stack.stackSize) {
+                            var13 = stack.stackSize;
                         }
 
-                        var9.stackSize -= var13;
-                        var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
+                        stack.stackSize -= var13;
+                        droppedStack = new EntityItem(world, (double)((float)x + var10), (double)((float)y + var11), (double)((float)z + var12), new ItemStack(stack.getItem(), var13, stack.getItemDamage()));
                         float var15 = 0.05F;
-                        var14.motionX = (double)((float)par1World.rand.nextGaussian() * var15);
-                        var14.motionY = (double)((float)par1World.rand.nextGaussian() * var15 + 0.2F);
-                        var14.motionZ = (double)((float)par1World.rand.nextGaussian() * var15);
+                        droppedStack.motionX = (double)((float)world.rand.nextGaussian() * var15);
+                        droppedStack.motionY = (double)((float)world.rand.nextGaussian() * var15 + 0.2F);
+                        droppedStack.motionZ = (double)((float)world.rand.nextGaussian() * var15);
 
-                        if (var9.hasTagCompound())
-                        {
-                            var14.getEntityItem().setTagCompound((NBTTagCompound)var9.getTagCompound().copy());
+                        if (stack.hasTagCompound()) {
+                            droppedStack.getEntityItem().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
                         }
                     }
                 }
             }
         }
-
-        super.breakBlock(par1World, par2, par3, par4, par5, par6);
+        super.breakBlock(world, x, y, z, block, metadata);
     }
 
-	
+    
 
-	
+    
 
-	@Override
-    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7, float par8, float par9)
-    {
-		if (entityplayer.isSneaking()) {
-			return false;
-		}
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityplayer, int par6, float par7, float par8, float par9) {
+        if (entityplayer.isSneaking()) {
+            return false;
+        }
 
-
-        if (world.isRemote)
-        {
+        if (world.isRemote) {
             return true;
         }
 
-        //TileEntityCargo tileentitycargo = (TileEntityCargo)world.getBlockTileEntity(i, j, k);
-
-        //if (tileentitycargo != null)
-        //{
-            //ModLoader.openGUI(entityplayer, new GuiCargo(entityplayer.inventory, tileentitycargo));
-			FMLNetworkHandler.openGui(entityplayer, StevesCarts.instance, 1, world, i, j, k);
-        //}
+        FMLNetworkHandler.openGui(entityplayer, StevesCarts.instance, 1, world, x, y, z);
 
         return true;
     }
 
-	@Override
-    public TileEntity createNewTileEntity(World world, int var2)
-    {
+    @Override
+    public TileEntity createNewTileEntity(World world, int var2) {
         return new TileEntityCargo();
     }
+
 }

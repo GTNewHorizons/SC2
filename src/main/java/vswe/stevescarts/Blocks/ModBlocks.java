@@ -1,6 +1,5 @@
 package vswe.stevescarts.Blocks;
 
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -33,8 +32,6 @@ public enum ModBlocks {
     LIQUID_MANAGER("BlockLiquidManager", BlockLiquidManager.class, TileEntityLiquid.class, "liquid"),
     STORAGE("BlockMetalStorage", BlockMetalStorage.class, ItemBlockStorage.class);
 
-
-
     private final String name;
     private final Class<? extends IBlockBase> clazz;
     private final Class<? extends TileEntity> tileEntityClazz;
@@ -63,7 +60,6 @@ public enum ModBlocks {
         this.itemClazz = itemClazz;
     }
 
-
     public static void init() {
         for (ModBlocks blockInfo : values()) {
             try {
@@ -82,7 +78,7 @@ public enum ModBlocks {
                     if (blockInfo.tileEntityClazz != null) {
                         GameRegistry.registerTileEntity(blockInfo.tileEntityClazz, blockInfo.tileEntityName);
                     }
-                }else{
+                } else {
                     System.out.println("This is not a block (" + blockInfo.name + ")");
                 }
             }catch(Exception e) {
@@ -92,16 +88,12 @@ public enum ModBlocks {
             }
         }
 
-
         STORAGE.block.setHardness(5.0F).setResistance(10.0F);
     }
-
 
     public static void addRecipes() {
         String blue = "dyeBlue";
         String orange = "dyeOrange";
-
-
 
         //cargo manager
         RecipeHelper.addRecipe(new ItemStack(CARGO_MANAGER.block, 1), new Object[][]{
@@ -109,7 +101,6 @@ public enum ModBlocks {
                 {ComponentTypes.HUGE_IRON_PANE.getItemStack(), ComponentTypes.LARGE_DYNAMIC_PANE.getItemStack(), ComponentTypes.HUGE_IRON_PANE.getItemStack()},
                 {ComponentTypes.LARGE_IRON_PANE.getItemStack(), ComponentTypes.HUGE_IRON_PANE.getItemStack(), ComponentTypes.LARGE_IRON_PANE.getItemStack()}
         });
-
 
         //activator
         RecipeHelper.addRecipe(new ItemStack(MODULE_TOGGLER.block, 1), new Object[][]{
@@ -138,7 +129,6 @@ public enum ModBlocks {
                 {Items.redstone, Blocks.rail, Items.redstone},
                 {null, Items.redstone, null}
         });
-
 
         //adv detector rail
         RecipeHelper.addRecipe(new ItemStack(ADVANCED_DETECTOR.block, 2), new Object[][]{
@@ -193,6 +183,5 @@ public enum ModBlocks {
     public Block getBlock() {
         return block;
     }
-
 
 }

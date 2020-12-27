@@ -1,4 +1,5 @@
 package vswe.stevescarts.Blocks;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.util.IIcon;
@@ -7,57 +8,51 @@ import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.Carts.MinecartModular;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-public class BlockRailJunction extends BlockSpecialRailBase
-{
 
-	private IIcon normalIcon;
-	private IIcon cornerIcon;
+public class BlockRailJunction extends BlockSpecialRailBase {
 
-    public BlockRailJunction()
-    {
+    private IIcon normalIcon;
+    private IIcon cornerIcon;
+
+    public BlockRailJunction() {
         super(false);
-        setCreativeTab(StevesCarts.tabsSC2Blocks);		
+        setCreativeTab(StevesCarts.tabsSC2Blocks);        
     }
 
-	@Override
-    public IIcon getIcon(int side, int meta)
-    {
+    @Override
+    public IIcon getIcon(int side, int meta) {
         return meta >= 6 ? cornerIcon : normalIcon;
     }
-	
-
-	@Override
+    
+    @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister register)
-    {
+    public void registerBlockIcons(IIconRegister register) {
         normalIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "junction_rail");
-		cornerIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "junction_rail" + "_corner");
+        cornerIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "junction_rail" + "_corner");
     }
 
-    /*  Return true if the rail can go up and down slopes
+    /**
+     *  Return true if the rail can go up and down slopes
      */
     @Override
-    public boolean canMakeSlopes(IBlockAccess world, int i, int j, int k)
-    {
+    public boolean canMakeSlopes(IBlockAccess world, int x, int y, int z) {
         return false;
     }
 
     /*  Return the rails metadata
      */
     @Override
-    public int getBasicRailMetadata(IBlockAccess world, EntityMinecart cart, int i, int j, int k)
-    {
-		if (cart instanceof MinecartModular) {
-			MinecartModular modularCart = (MinecartModular)cart;
-			
-			int meta = modularCart.getRailMeta(i,j,k);
-			
-			if (meta != -1) {
-				return meta;
-			}
-		}
-		
+    public int getBasicRailMetadata(IBlockAccess world, EntityMinecart cart, int x, int y, int z) {
+        if (cart instanceof MinecartModular) {
+            MinecartModular modularCart = (MinecartModular)cart;
 
-        return world.getBlockMetadata(i, j, k);
+            int meta = modularCart.getRailMeta(x,y,z);
+
+            if (meta != -1) {
+                return meta;
+            }
+        }
+        return world.getBlockMetadata(x, y, z);
     }
+
 }

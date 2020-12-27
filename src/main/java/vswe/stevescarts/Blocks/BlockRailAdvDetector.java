@@ -21,54 +21,46 @@ import vswe.stevescarts.Upgrades.Disassemble;
 import vswe.stevescarts.Upgrades.Transposer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-public class BlockRailAdvDetector extends BlockSpecialRailBase
-{
+public class BlockRailAdvDetector extends BlockSpecialRailBase {
 	
 	private IIcon normalIcon;
 	private IIcon cornerIcon;
 
-    public BlockRailAdvDetector()
-    {
+    public BlockRailAdvDetector() {
         super(false);
         setCreativeTab(StevesCarts.tabsSC2Blocks);		
     }
 	
 	@Override
-    public IIcon getIcon(int side, int meta)
-    {
+    public IIcon getIcon(int side, int meta) {
         return meta >= 6 ? cornerIcon : normalIcon;
     }
 	
 
 	@Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister register)
-    {
-        normalIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "advanced_detector_rail");
-		cornerIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":" + "advanced_detector_rail" + "_corner");
+    public void registerBlockIcons(IIconRegister register) {
+        normalIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":advanced_detector_rail");
+		cornerIcon = register.registerIcon(StevesCarts.instance.textureHeader + ":advanced_detector_rail_corner");
     }	
 
-    /*  Return true if the rail can go up and down slopes
+    /**
+     *  Return true if the rail can go up and down slopes
      */
     @Override
-    public boolean canMakeSlopes(IBlockAccess world, int i, int j, int k)
-    {
+    public boolean canMakeSlopes(IBlockAccess world, int x, int y, int z) {
         return false;
     }
 
 
 	@Override
-	public void onMinecartPass(World world, EntityMinecart Minecart, int x, int y, int z)
-    {
+	public void onMinecartPass(World world, EntityMinecart Minecart, int x, int y, int z) {
 		if (world.isRemote || !(Minecart instanceof MinecartModular)) {
 			return;
 		}
 	
-	
 		MinecartModular cart = (MinecartModular)Minecart;
-		
 
-	
 		if (world.getBlock(x, y - 1, z) == ModBlocks.DETECTOR_UNIT.getBlock() && DetectorType.getTypeFromMeta(world.getBlockMetadata(x, y-1, z)).canInteractWithCart()) {
 			
 			TileEntity tileentity = world.getTileEntity(x, y - 1, z);
@@ -92,8 +84,7 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
 				if (Math.abs(i) != Math.abs(j)) {
 					
 					Block block = world.getBlock(x + i, y, z + j);
-					if (block == ModBlocks.CARGO_MANAGER.getBlock() || block == ModBlocks.LIQUID_MANAGER.getBlock())
-					{
+					if (block == ModBlocks.CARGO_MANAGER.getBlock() || block == ModBlocks.LIQUID_MANAGER.getBlock()) {
 						TileEntity tileentity = world.getTileEntity(x+i, y, z+j);
 						
 						if (tileentity != null && tileentity instanceof TileEntityManager) {
@@ -105,14 +96,12 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
 						}
 						
 						return;						
-					}else if(block == ModBlocks.MODULE_TOGGLER.getBlock()) {
+					} else if(block == ModBlocks.MODULE_TOGGLER.getBlock()) {
 						TileEntity tileentity = world.getTileEntity(x+i, y, z+j);
 						
 						if (tileentity != null && tileentity instanceof TileEntityActivator) {
 							TileEntityActivator activator = (TileEntityActivator)tileentity;
 
-						
-						
 							boolean isOrange = false;
 						
 							if ((cart.temppushX == 0) == (cart.temppushZ == 0)) {
@@ -122,14 +111,13 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
 							if (i == 0) {
 								if (j == -1) {
 									isOrange = cart.temppushX < 0;
-								}else{
+								} else {
 									isOrange = cart.temppushX > 0;
 								}
-							
-							}else if(j == 0) {
+							} else if(j == 0) {
 								if (i == -1) {
 									isOrange = cart.temppushZ > 0;
-								}else{
+								} else {
 									isOrange = cart.temppushZ < 0;
 								}						
 							}
@@ -137,13 +125,12 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
 							activator.handleCart(cart, isOrange);
 							cart.releaseCart();							
 						}
-						
-						
+
 						return;
 						
-					}else if(block == ModBlocks.UPGRADE.getBlock()) {
+					} else if(block == ModBlocks.UPGRADE.getBlock()) {
 						TileEntity tileentity = world.getTileEntity(x+i, y, z+j);
-						
+
 						TileEntityUpgrade upgrade = (TileEntityUpgrade)tileentity;
 						if(upgrade != null && upgrade.getUpgrade() != null) {
 							for (BaseEffect effect : upgrade.getUpgrade().getEffects()) {
@@ -176,19 +163,15 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
 							}							
 						}
 					}
-
 					side++;
 				}
 			}			
 		}
-		
-		
 
 		boolean receivesPower = world.isBlockIndirectlyGettingPowered(x, y, z);			
 		if(receivesPower){
 			cart.releaseCart();
-		}			
-
+		}
     }
 
     @Override
@@ -206,7 +189,7 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
                     Block block = world.getBlock(x+i, y, z+j);
                     if (block == ModBlocks.CARGO_MANAGER.getBlock() || block == ModBlocks.LIQUID_MANAGER.getBlock() || block == ModBlocks.MODULE_TOGGLER.getBlock()) {
                         return false;
-                    }else if(block == ModBlocks.UPGRADE.getBlock()) {
+                    } else if(block == ModBlocks.UPGRADE.getBlock()) {
                         TileEntity tileentity = world.getTileEntity(x+i, y, z+j);
 
                         TileEntityUpgrade upgrade = (TileEntityUpgrade)tileentity;
@@ -231,24 +214,20 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
                 }
             }
         }
-
         //if nothing else used this activator it can be controlled by redstone
         return true;
     }
 	
 	private boolean isCartReadyForAction(MinecartModular cart, int x, int y, int z) {
-		if ((int)cart.disabledX == x || (int)cart.disabledY == y || (int)cart.disabledZ == z)
-		{
+		if ((int)cart.disabledX == x || (int)cart.disabledY == y || (int)cart.disabledZ == z) {
 			return cart.isDisabled();		
 		}
-		
+
 		return false;
 	}
 
-
 	@Override
-    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7, float par8, float par9)
-    {
+    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7, float par8, float par9) {
 		if (world.getBlock(i,j-1,k) == ModBlocks.DETECTOR_UNIT.getBlock()) {
 			return ModBlocks.DETECTOR_UNIT.getBlock().onBlockActivated(world, i, j-1, k, entityplayer, par6, par7, par8, par9);
 		}
@@ -256,8 +235,8 @@ public class BlockRailAdvDetector extends BlockSpecialRailBase
         return false;
     }	
 
-
     public void refreshState(World world, int x, int y, int z, boolean flag) {
         new Rail(world, x, y, z).func_150655_a(flag, false);
     }
+
 }
