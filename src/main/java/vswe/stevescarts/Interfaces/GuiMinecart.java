@@ -7,14 +7,14 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import vswe.stevescarts.Carts.MinecartModular;
-import vswe.stevescarts.Helpers.GeneratedInfo;
 import vswe.stevescarts.Helpers.ModuleCountPair;
 import vswe.stevescarts.Helpers.ResourceHelper;
-import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.Slots.SlotBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import static vswe.stevescarts.StevesCarts.isDevelopmentEnvironment;
 
 @SideOnly(Side.CLIENT)
 public class GuiMinecart extends GuiBase
@@ -336,7 +336,7 @@ public class GuiMinecart extends GuiBase
 				}
 			}
 
-			if (GeneratedInfo.inDev) {
+			if (isDevelopmentEnvironment()) {
 				drawTexturedModalRect(getGuiLeft() + module.getX(), getGuiTop() + module.getY(), xSize-256, 18, 3, 3);
 				drawTexturedModalRect(getGuiLeft() + module.getX() + module.guiWidth() - 2, getGuiTop() + module.getY(), xSize-256 + 3, 18, 3, 3);
 				drawTexturedModalRect(getGuiLeft() + module.getX() + module.guiWidth() - 2, getGuiTop() + module.getY() + module.guiHeight() - 2, xSize-256 + 3, 18+3, 3, 3);
