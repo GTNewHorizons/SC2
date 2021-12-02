@@ -2,26 +2,25 @@ package vswe.stevescarts.Items;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.block.BlockRailBase;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemMinecart;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagByteArray;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import vswe.stevescarts.Helpers.EntityCake;
 import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.CartVersion;
 import vswe.stevescarts.Helpers.ColorHelper;
-import vswe.stevescarts.Helpers.GeneratedInfo;
 import vswe.stevescarts.Helpers.ModuleCountPair;
 import vswe.stevescarts.ModuleData.ModuleData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import static vswe.stevescarts.StevesCarts.isDevelopmentEnvironment;
+
 public class ItemCarts extends ItemMinecart
 {
 
@@ -148,7 +147,7 @@ public class ItemCarts extends ItemMinecart
 				list.add(ColorHelper.RED + "Time left: " + formatTime(timeLeft));
 			}
 
-			if (GeneratedInfo.inDev) {
+			if (isDevelopmentEnvironment()) {
 				list.add(ColorHelper.WHITE + "Version: " + (info.hasKey("CartVersion") ? info.getByte("CartVersion") : 0));
 			}
 		}else{

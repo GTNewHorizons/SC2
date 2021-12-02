@@ -1,21 +1,28 @@
-#Ignore eclipse workspace files
+.gradle
+.settings
+/.idea/
+/run/
+/build/
+/eclipse/
 .classpath
 .project
-.settings
-eclipse
-
-#Ignore IntelliJ IDEA files
+/bin/
+/config/
+/crash-reports/
+/logs/
+options.txt
+/saves/
+usernamecache.json
+banned-ips.json
+banned-players.json
+eula.txt
+ops.json
+server.properties
+servers.dat
+usercache.json
+whitelist.json
+/out/
 *.iml
 *.ipr
 *.iws
-out
-
-#Ignore minecraft source files
-build
-
-#Ignore compiled mod files
-bin
-
-#Ignore gradle logs
-.gradle
-*.bat
+src/main/resources/mixins.*.json

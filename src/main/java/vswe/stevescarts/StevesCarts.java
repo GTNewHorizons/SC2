@@ -2,6 +2,7 @@ package vswe.stevescarts;
 
 import cpw.mods.fml.common.network.FMLEventChannel;
 import net.minecraft.item.ItemStack;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 import vswe.stevescarts.Blocks.*;
@@ -10,7 +11,6 @@ import vswe.stevescarts.Helpers.CraftingHandler;
 import vswe.stevescarts.Helpers.CreativeTabSC2;
 import vswe.stevescarts.Helpers.EntityCake;
 import vswe.stevescarts.Helpers.EntityEasterEgg;
-import vswe.stevescarts.Helpers.GeneratedInfo;
 import vswe.stevescarts.Helpers.GiftItem;
 import vswe.stevescarts.Helpers.TradeHandler;
 import vswe.stevescarts.Helpers.WoodFuelHandler;
@@ -34,7 +34,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "StevesCarts", name = "Steve's Carts 2", version = GeneratedInfo.version)
+@Mod(modid = "StevesCarts", name = "Steve's Carts 2", version = "GRADLETOKEN_VERSION")
 public class StevesCarts {
 	public static boolean hasGreenScreen = false;
 	public static boolean isChristmas = false;
@@ -69,6 +69,15 @@ public class StevesCarts {
     public static FMLEventChannel packetHandler;
 
 	public static Logger logger;
+
+	private static Boolean isDev = null;
+
+	public static boolean isDevelopmentEnvironment() {
+		if(isDev == null) {
+			isDev = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+		}
+		return isDev;
+	}
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
