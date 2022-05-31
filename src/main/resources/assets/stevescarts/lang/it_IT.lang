@@ -421,8 +421,8 @@ item.SC2:creative_mode.name=Potenziamento: Modalita' creativa
 item.SC2:quick_demolisher.name=Potenziamento: Demolizione rapida
 item.SC2:manager_bridge.name=Potenziamento: Ponte gestionale
 item.SC2:entropy.name=Potenziamento: Entropia
-item.SC2:solar_panel.name=Potenziamento: Pannello solare
-item.SC2:thermal_engine.name=Potenziamento: Motore termico
+item.SC2:solar_panel_upgrade.name=Potenziamento: Pannello solare
+item.SC2:thermal_engine_upgrade.name=Potenziamento: Motore termico
 
 # Detector Units
 item.SC2:BlockDetector0.name=Rilevatore primario

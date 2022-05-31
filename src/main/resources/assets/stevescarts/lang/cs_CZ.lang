@@ -421,8 +421,8 @@ item.SC2:creative_mode.name=Vylepseni: Podvadeni!
 item.SC2:quick_demolisher.name=Vylepseni: Rychly nicitel
 item.SC2:manager_bridge.name=Vylepseni: Manazer mostu
 item.SC2:entropy.name=Vylepseni: Entropie
-item.SC2:solar_panel.name=Vylepseni: Solarni panel
-item.SC2:thermal_engine.name=Vylepseni: Termalni motor
+item.SC2:solar_panel_upgrade.name=Vylepseni: Solarni panel
+item.SC2:thermal_engine_upgrade.name=Vylepseni: Termalni motor
 
 # Detector Units
 item.SC2:BlockDetector0.name=Detekovaci manazer

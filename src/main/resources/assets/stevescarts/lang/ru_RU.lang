@@ -426,7 +426,7 @@ item.SC2:creative_mode.name=Улучшение: Творческий режим
 item.SC2:quick_demolisher.name=Улучшение: Быстрый демонтаж
 item.SC2:manager_bridge.name=Улучшение: Соединение с распределителем
 item.SC2:entropy.name=Улучшение: Энтропия
-item.SC2:solar_panel.name=Улучшение: Солнечная батарея
+item.SC2:solar_panel_upgrade.name=Улучшение: Солнечная батарея
 item.SC2:thermal_engine_upgrade.name=Улучшение: Термальный двигатель
 
 # Detector Units
