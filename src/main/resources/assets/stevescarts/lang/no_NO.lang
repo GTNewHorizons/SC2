@@ -421,7 +421,7 @@ item.SC2:creative_mode.name=Oppgradering: Kreativ modus
 item.SC2:quick_demolisher.name=Oppgradering: Rast Nedbryter
 item.SC2:manager_bridge.name=Oppgradering: Bestyrerbro
 item.SC2:entropy.name=Oppgradering: Entropi
-item.SC2:solar_panel.name=Oppgradering: Solcellepanel
+item.SC2:solar_panel_upgrade.name=Oppgradering: Solcellepanel
 item.SC2:thermal_engine_upgrade.name=Oppgradering: Termisk Motor
 
 # Detector Units

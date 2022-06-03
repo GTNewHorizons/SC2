@@ -242,7 +242,7 @@ public class AssemblerUpgrade {
 
 
 		
-		new AssemblerUpgrade(19, "Solar Panel")
+		new AssemblerUpgrade(19, "Solar Panel Upgrade")
 			.addEffect(new Solar())
 			.addRecipe(new Object[][] {
 					{ComponentTypes.SOLAR_PANEL.getItemStack(), ComponentTypes.SOLAR_PANEL.getItemStack(), ComponentTypes.SOLAR_PANEL.getItemStack()},

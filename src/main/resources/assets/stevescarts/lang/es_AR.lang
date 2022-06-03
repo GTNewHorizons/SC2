@@ -421,7 +421,7 @@ item.SC2:creative_mode.name=Mejora: Modo creativo
 item.SC2:quick_demolisher.name=Mejora: Demoledor rápido
 item.SC2:manager_bridge.name=Mejora: Administrador de puentes
 item.SC2:entropy.name=Mejora: Entropía
-item.SC2:solar_panel.name=Mejora: Panel solar
+item.SC2:solar_panel_upgrade.name=Mejora: Panel solar
 item.SC2:thermal_engine_upgrade.name=Motor termal
 
 # Detector Units

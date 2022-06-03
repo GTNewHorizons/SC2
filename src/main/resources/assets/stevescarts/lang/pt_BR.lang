@@ -426,7 +426,7 @@ item.SC2:creative_mode.name=Upgrade: Modo Criativo
 item.SC2:quick_demolisher.name=Upgrade: Demolidor Rápido
 item.SC2:manager_bridge.name=Upgrade: Conexão com o Gerenciador
 item.SC2:entropy.name=Upgrade: Entropia
-item.SC2:solar_panel.name=Upgrade: Painel Solar
+item.SC2:solar_panel_upgrade.name=Upgrade: Painel Solar
 item.SC2:thermal_engine_upgrade.name=Upgrade: Motor Térmico
 
 # Detector Units
