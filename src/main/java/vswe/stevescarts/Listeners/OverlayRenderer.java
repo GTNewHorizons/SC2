@@ -1,15 +1,15 @@
 package vswe.stevescarts.Listeners;
 
+import net.minecraft.entity.player.EntityPlayer;
+
+import vswe.stevescarts.Carts.MinecartModular;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import net.minecraft.entity.player.EntityPlayer;
-import vswe.stevescarts.Carts.MinecartModular;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class OverlayRenderer
-{
+public class OverlayRenderer {
 
     public OverlayRenderer() {
         FMLCommonHandler.instance().bus().register(this);
@@ -21,18 +21,16 @@ public class OverlayRenderer
             renderOverlay();
         }
     }
-	
 
-	@SideOnly(Side.CLIENT)
-	private void renderOverlay() {
-		net.minecraft.client.Minecraft minecraft = net.minecraft.client.Minecraft.getMinecraft();		
-	    EntityPlayer player = minecraft.thePlayer;
+    @SideOnly(Side.CLIENT)
+    private void renderOverlay() {
+        net.minecraft.client.Minecraft minecraft = net.minecraft.client.Minecraft.getMinecraft();
+        EntityPlayer player = minecraft.thePlayer;
 
-        if (minecraft.currentScreen == null && player.ridingEntity != null && player.ridingEntity instanceof MinecartModular)
-        {
-            ((MinecartModular)player.ridingEntity).renderOverlay(minecraft);
+        if (minecraft.currentScreen == null && player.ridingEntity != null
+                && player.ridingEntity instanceof MinecartModular) {
+            ((MinecartModular) player.ridingEntity).renderOverlay(minecraft);
         }
-	}
+    }
 
-	
 }

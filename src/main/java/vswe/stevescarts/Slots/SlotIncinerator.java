@@ -1,25 +1,21 @@
 package vswe.stevescarts.Slots;
+
 import net.minecraft.inventory.IInventory;
 
-public class SlotIncinerator extends SlotBase implements ISpecialSlotValidator
-{
-	
+public class SlotIncinerator extends SlotBase implements ISpecialSlotValidator {
 
-
-    public SlotIncinerator(IInventory inv, int id, int x, int y)
-    {
+    public SlotIncinerator(IInventory inv, int id, int x, int y) {
         super(inv, id, x, y);
     }
-	
-	@Override
-	public boolean isSlotValid() {
-		return false;
-	}
-	
-	@Override
-	public int getSlotStackLimit()
-    {
-		return 1;
-	}
-	
+
+    @Override
+    public boolean isSlotValid() {
+        return false;
+    }
+
+    @Override
+    public int getSlotStackLimit() {
+        return 1;
+    }
+
 }

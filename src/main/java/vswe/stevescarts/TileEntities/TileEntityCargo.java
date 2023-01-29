@@ -1,7 +1,7 @@
 package vswe.stevescarts.TileEntities;
+
 import java.util.ArrayList;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -9,17 +9,17 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import vswe.stevescarts.Helpers.*;
-import vswe.stevescarts.Items.ModItems;
+
 import vswe.stevescarts.Containers.ContainerBase;
 import vswe.stevescarts.Containers.ContainerCargo;
 import vswe.stevescarts.Containers.ContainerManager;
+import vswe.stevescarts.Helpers.*;
 import vswe.stevescarts.Helpers.TransferHandler.TRANSFER_TYPE;
 import vswe.stevescarts.Interfaces.GuiBase;
 import vswe.stevescarts.Interfaces.GuiCargo;
+import vswe.stevescarts.Items.ModItems;
 import vswe.stevescarts.Slots.ISlotExplosions;
 import vswe.stevescarts.Slots.SlotArrow;
 import vswe.stevescarts.Slots.SlotBridge;
@@ -36,137 +36,182 @@ import vswe.stevescarts.Slots.SlotSeed;
 import vswe.stevescarts.Slots.SlotTorch;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-public class TileEntityCargo extends TileEntityManager
-{
-    
-	@SideOnly(Side.CLIENT)
-	@Override
-	public GuiBase getGui(InventoryPlayer inv) {
-		return new GuiCargo(inv, this);
-	}
-	
-	@Override
-	public ContainerBase getContainer(InventoryPlayer inv) {
-		return new ContainerCargo(inv, this);		
-	}
-	public TileEntityCargo()
-    {
-		super();
+
+public class TileEntityCargo extends TileEntityManager {
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public GuiBase getGui(InventoryPlayer inv) {
+        return new GuiCargo(inv, this);
     }
 
-	public static ArrayList<CargoItemSelection> itemSelections;
+    @Override
+    public ContainerBase getContainer(InventoryPlayer inv) {
+        return new ContainerCargo(inv, this);
+    }
 
-	
-	public static void loadSelectionSettings() {
-		itemSelections = new ArrayList<CargoItemSelection>();
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_ALL, Slot.class, new ItemStack(ModItems.carts, 1, 0)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_ENGINE, SlotFuel.class, new ItemStack(ModItems.modules, 1, 0)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_RAILER, SlotBuilder.class, new ItemStack(ModItems.modules, 1, 10)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_STORAGE, SlotChest.class, new ItemStack(Blocks.chest, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_TORCHES, SlotTorch.class, new ItemStack(Blocks.torch, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_EXPLOSIVES, ISlotExplosions.class, ComponentTypes.DYNAMITE.getItemStack()));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_ARROWS, SlotArrow.class, new ItemStack(Items.arrow, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_BRIDGE, SlotBridge.class, new ItemStack(Blocks.brick_block, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_SEEDS, SlotSeed.class, new ItemStack(Items.wheat_seeds, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_FERTILIZER, SlotFertilizer.class, new ItemStack(Items.dye, 1, 15)));
-		itemSelections.add(new CargoItemSelection(null, null, null));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_SAPLINGS, SlotSapling.class, new ItemStack(Blocks.sapling, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_FIREWORK, SlotFirework.class, new ItemStack(Items.fireworks, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_BUCKETS, SlotMilker.class, new ItemStack(Items.bucket, 1)));
-		itemSelections.add(new CargoItemSelection(Localization.GUI.CARGO.AREA_CAKES, SlotCake.class, new ItemStack(Items.cake, 1)));
-	}
-	
-	
-	@Override
-    public int getSizeInventory()
-    {
+    public TileEntityCargo() {
+        super();
+    }
+
+    public static ArrayList<CargoItemSelection> itemSelections;
+
+    public static void loadSelectionSettings() {
+        itemSelections = new ArrayList<CargoItemSelection>();
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_ALL,
+                        Slot.class,
+                        new ItemStack(ModItems.carts, 1, 0)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_ENGINE,
+                        SlotFuel.class,
+                        new ItemStack(ModItems.modules, 1, 0)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_RAILER,
+                        SlotBuilder.class,
+                        new ItemStack(ModItems.modules, 1, 10)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_STORAGE,
+                        SlotChest.class,
+                        new ItemStack(Blocks.chest, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_TORCHES,
+                        SlotTorch.class,
+                        new ItemStack(Blocks.torch, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_EXPLOSIVES,
+                        ISlotExplosions.class,
+                        ComponentTypes.DYNAMITE.getItemStack()));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_ARROWS,
+                        SlotArrow.class,
+                        new ItemStack(Items.arrow, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_BRIDGE,
+                        SlotBridge.class,
+                        new ItemStack(Blocks.brick_block, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_SEEDS,
+                        SlotSeed.class,
+                        new ItemStack(Items.wheat_seeds, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_FERTILIZER,
+                        SlotFertilizer.class,
+                        new ItemStack(Items.dye, 1, 15)));
+        itemSelections.add(new CargoItemSelection(null, null, null));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_SAPLINGS,
+                        SlotSapling.class,
+                        new ItemStack(Blocks.sapling, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_FIREWORK,
+                        SlotFirework.class,
+                        new ItemStack(Items.fireworks, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_BUCKETS,
+                        SlotMilker.class,
+                        new ItemStack(Items.bucket, 1)));
+        itemSelections.add(
+                new CargoItemSelection(
+                        Localization.GUI.CARGO.AREA_CAKES,
+                        SlotCake.class,
+                        new ItemStack(Items.cake, 1)));
+    }
+
+    @Override
+    public int getSizeInventory() {
         return 60;
     }
 
-	@Override
-    public String getInventoryName()
-    {
+    @Override
+    public String getInventoryName() {
         return "container.cargomanager";
     }
 
-    public int target[] = new int[] {0, 0, 0, 0};
-	public ArrayList<SlotCargo> cargoSlots;
-	public int lastLayout = -1;
-	
-	@Override
-	protected void updateLayout() {
-		if (cargoSlots != null && lastLayout != layoutType) {
-			for (SlotCargo slot : cargoSlots) {
-				slot.updatePosition();
-			}
-			lastLayout = layoutType;
-		}		
-	}	
-	
-	@Override
-	protected boolean isTargetValid(ManagerTransfer transfer) {
-		return target[transfer.getSetting()] >= 0 && target[transfer.getSetting()] < itemSelections.size();
-	}
-	
-	@Override
-	protected void receiveClickData(int packetid, int id, int dif) {
-		if (packetid == 1) {
-			target[id] += dif;
+    public int target[] = new int[] { 0, 0, 0, 0 };
+    public ArrayList<SlotCargo> cargoSlots;
+    public int lastLayout = -1;
 
-			if (target[id] >= itemSelections.size())
-			{
-				target[id] = 0;
-			}
-			else if (target[id] < 0)
-			{
-				target[id] = itemSelections.size() - 1;
-			}
+    @Override
+    protected void updateLayout() {
+        if (cargoSlots != null && lastLayout != layoutType) {
+            for (SlotCargo slot : cargoSlots) {
+                slot.updatePosition();
+            }
+            lastLayout = layoutType;
+        }
+    }
 
-			if (color[id] - 1 == getSide())
-			{
-				reset();
-			}
-			
-			if (itemSelections.get(target[id]).getValidSlot() == null && dif != 0) {
-				receiveClickData(packetid, id, dif);
-			}
-		}				
-	}
-	
+    @Override
+    protected boolean isTargetValid(ManagerTransfer transfer) {
+        return target[transfer.getSetting()] >= 0 && target[transfer.getSetting()] < itemSelections.size();
+    }
 
-	@Override
-	public void checkGuiData(ContainerManager conManager, ICrafting crafting, boolean isNew) {
-		super.checkGuiData(conManager, crafting, isNew);
-	
-		ContainerCargo con = (ContainerCargo)conManager;
-	
-		short targetShort = (short)0;
-		for (int i = 0; i < 4; i++) {
-			targetShort |= (target[i] & 15) << (i*4);
-		}
-		if (isNew || con.lastTarget != targetShort) {
-			updateGuiData(con, crafting, 2, targetShort);
-			con.lastTarget = targetShort;
-		}	
-	}
-	
-	@Override
-	public void receiveGuiData(int id, short data) {
-		if(id == 2) {
-			for (int i = 0; i < 4; i++) {
-				target[i] = (data & (15 << (i*4))) >> (i*4);
-			}
-		}else{
-			super.receiveGuiData(id, data);
-		}
-	}
+    @Override
+    protected void receiveClickData(int packetid, int id, int dif) {
+        if (packetid == 1) {
+            target[id] += dif;
 
-    public int getAmount(int id)
-    {
+            if (target[id] >= itemSelections.size()) {
+                target[id] = 0;
+            } else if (target[id] < 0) {
+                target[id] = itemSelections.size() - 1;
+            }
+
+            if (color[id] - 1 == getSide()) {
+                reset();
+            }
+
+            if (itemSelections.get(target[id]).getValidSlot() == null && dif != 0) {
+                receiveClickData(packetid, id, dif);
+            }
+        }
+    }
+
+    @Override
+    public void checkGuiData(ContainerManager conManager, ICrafting crafting, boolean isNew) {
+        super.checkGuiData(conManager, crafting, isNew);
+
+        ContainerCargo con = (ContainerCargo) conManager;
+
+        short targetShort = (short) 0;
+        for (int i = 0; i < 4; i++) {
+            targetShort |= (target[i] & 15) << (i * 4);
+        }
+        if (isNew || con.lastTarget != targetShort) {
+            updateGuiData(con, crafting, 2, targetShort);
+            con.lastTarget = targetShort;
+        }
+    }
+
+    @Override
+    public void receiveGuiData(int id, short data) {
+        if (id == 2) {
+            for (int i = 0; i < 4; i++) {
+                target[i] = (data & (15 << (i * 4))) >> (i * 4);
+            }
+        } else {
+            super.receiveGuiData(id, data);
+        }
+    }
+
+    public int getAmount(int id) {
         int val = getAmountId(id);
 
-        switch (val)
-        {
+        switch (val) {
             case 1:
                 return 1;
 
@@ -202,152 +247,127 @@ public class TileEntityCargo extends TileEntityManager
         }
     }
 
-    //0 - MAX
-    //1 - Items
-    //2 - Stacks
-    public int getAmountType(int id)
-    {
+    // 0 - MAX
+    // 1 - Items
+    // 2 - Stacks
+    public int getAmountType(int id) {
         int val = getAmountId(id);
 
-        if (val == 0)
-        {
+        if (val == 0) {
             return 0;
-        }
-        else if (val <= 6)
-        {
+        } else if (val <= 6) {
             return 1;
-        }
-        else
-        {
+        } else {
             return 2;
         }
     }
-	
-	@Override
-	public int getAmountCount() {
-		return 11;
-	}
-	
 
-	@Override
-    public void readFromNBT(NBTTagCompound nbttagcompound)
-    {
+    @Override
+    public int getAmountCount() {
+        return 11;
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound nbttagcompound) {
         super.readFromNBT(nbttagcompound);
-        setWorkload(nbttagcompound.getByte("workload"));		
-        for (int i = 0; i < 4; i++)
-        {
+        setWorkload(nbttagcompound.getByte("workload"));
+        for (int i = 0; i < 4; i++) {
             target[i] = nbttagcompound.getByte("target" + i);
         }
-		
-	}
-	
-	@Override
-    public void writeToNBT(NBTTagCompound nbttagcompound)
-    {
-		super.writeToNBT(nbttagcompound);
-		nbttagcompound.setByte("workload", (byte)getWorkload());
-        for (int i = 0; i < 4; i++)
-        {
-            nbttagcompound.setByte("target" + i, (byte)target[i]);
-        }		
-	}
-	
-	@Override
-	protected boolean doTransfer(ManagerTransfer transfer) {
-		java.lang.Class slotCart = itemSelections.get(target[transfer.getSetting()]).getValidSlot();
-		if (slotCart == null) {
-			transfer.setLowestSetting(transfer.getSetting() + 1);
-			return true;
-		}
-		java.lang.Class slotCargo = SlotCargo.class;
 
+    }
 
-		IInventory fromInv;
-		Container fromCont;
-		java.lang.Class fromValid;
-		IInventory toInv;
-		Container toCont;
-		java.lang.Class toValid;
+    @Override
+    public void writeToNBT(NBTTagCompound nbttagcompound) {
+        super.writeToNBT(nbttagcompound);
+        nbttagcompound.setByte("workload", (byte) getWorkload());
+        for (int i = 0; i < 4; i++) {
+            nbttagcompound.setByte("target" + i, (byte) target[i]);
+        }
+    }
 
-		if (toCart[transfer.getSetting()])
-		{
-			fromInv = this;
-			fromCont = new ContainerCargo(null, this);
-			fromValid = slotCargo;
-			toInv = transfer.getCart();
-			toCont = transfer.getCart().getCon(null);
-			toValid = slotCart;
-		}
-		else
-		{
-			fromInv = transfer.getCart();
-			fromCont = transfer.getCart().getCon(null);
-			fromValid = slotCart;
-			toInv = this;
-			toCont = new ContainerCargo(null, this);
-			toValid = slotCargo;
-		}
+    @Override
+    protected boolean doTransfer(ManagerTransfer transfer) {
+        java.lang.Class slotCart = itemSelections.get(target[transfer.getSetting()]).getValidSlot();
+        if (slotCart == null) {
+            transfer.setLowestSetting(transfer.getSetting() + 1);
+            return true;
+        }
+        java.lang.Class slotCargo = SlotCargo.class;
 
-		latestTransferToBeUsed = transfer;
-		for (int i = 0; i < fromInv.getSizeInventory(); i++)
-		{
-			if (TransferHandler.isSlotOfType(fromCont.getSlot(i),fromValid) && fromInv.getStackInSlot(i) != null)
-			{
-				ItemStack iStack = fromInv.getStackInSlot(i);
-				int stacksize = iStack.stackSize;
-				int maxNumber;
+        IInventory fromInv;
+        Container fromCont;
+        java.lang.Class fromValid;
+        IInventory toInv;
+        Container toCont;
+        java.lang.Class toValid;
 
-				if (getAmountType(transfer.getSetting()) == 1)
-				{
-					maxNumber = getAmount(transfer.getSetting()) - transfer.getWorkload();
-				}
-				else
-				{
-					maxNumber = -1;
-				}
-				
-				TransferHandler.TransferItem(iStack, toInv, toCont, toValid, maxNumber, TRANSFER_TYPE.MANAGER);
+        if (toCart[transfer.getSetting()]) {
+            fromInv = this;
+            fromCont = new ContainerCargo(null, this);
+            fromValid = slotCargo;
+            toInv = transfer.getCart();
+            toCont = transfer.getCart().getCon(null);
+            toValid = slotCart;
+        } else {
+            fromInv = transfer.getCart();
+            fromCont = transfer.getCart().getCon(null);
+            fromValid = slotCart;
+            toInv = this;
+            toCont = new ContainerCargo(null, this);
+            toValid = slotCargo;
+        }
 
-				if (iStack.stackSize != stacksize)
-				{
-					if (getAmountType(transfer.getSetting()) == 1)
-					{
-						transfer.setWorkload(transfer.getWorkload() + stacksize - iStack.stackSize);
-					}
-					else if (getAmountType(transfer.getSetting()) == 2)
-					{
-						transfer.setWorkload(transfer.getWorkload() + 1);
-					}
+        latestTransferToBeUsed = transfer;
+        for (int i = 0; i < fromInv.getSizeInventory(); i++) {
+            if (TransferHandler.isSlotOfType(fromCont.getSlot(i), fromValid) && fromInv.getStackInSlot(i) != null) {
+                ItemStack iStack = fromInv.getStackInSlot(i);
+                int stacksize = iStack.stackSize;
+                int maxNumber;
 
-					markDirty();
-					transfer.getCart().markDirty();
+                if (getAmountType(transfer.getSetting()) == 1) {
+                    maxNumber = getAmount(transfer.getSetting()) - transfer.getWorkload();
+                } else {
+                    maxNumber = -1;
+                }
 
-					if (iStack.stackSize == 0)
-					{
-						fromInv.setInventorySlotContents(i, null);
-					}
+                TransferHandler.TransferItem(iStack, toInv, toCont, toValid, maxNumber, TRANSFER_TYPE.MANAGER);
 
-					if (transfer.getWorkload() >= getAmount(transfer.getSetting()) && getAmountType(transfer.getSetting()) != 0)
-					{
-						transfer.setLowestSetting(transfer.getSetting() + 1); //this is not available anymore
-					}
+                if (iStack.stackSize != stacksize) {
+                    if (getAmountType(transfer.getSetting()) == 1) {
+                        transfer.setWorkload(transfer.getWorkload() + stacksize - iStack.stackSize);
+                    } else if (getAmountType(transfer.getSetting()) == 2) {
+                        transfer.setWorkload(transfer.getWorkload() + 1);
+                    }
 
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
-	@Override
-    public boolean isItemValidForSlot(int slotId, ItemStack item)
-    {	
-		return true;
-	}
+                    markDirty();
+                    transfer.getCart().markDirty();
 
-	private ManagerTransfer latestTransferToBeUsed;
-	public ManagerTransfer getCurrentTransferForSlots() {
-		return latestTransferToBeUsed;
-	}	
-	
+                    if (iStack.stackSize == 0) {
+                        fromInv.setInventorySlotContents(i, null);
+                    }
+
+                    if (transfer.getWorkload() >= getAmount(transfer.getSetting())
+                            && getAmountType(transfer.getSetting()) != 0) {
+                        transfer.setLowestSetting(transfer.getSetting() + 1); // this is not available anymore
+                    }
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isItemValidForSlot(int slotId, ItemStack item) {
+        return true;
+    }
+
+    private ManagerTransfer latestTransferToBeUsed;
+
+    public ManagerTransfer getCurrentTransferForSlots() {
+        return latestTransferToBeUsed;
+    }
+
 }

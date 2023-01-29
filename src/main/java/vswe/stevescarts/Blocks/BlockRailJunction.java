@@ -4,8 +4,9 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-import vswe.stevescarts.StevesCarts;
+
 import vswe.stevescarts.Carts.MinecartModular;
+import vswe.stevescarts.StevesCarts;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -16,14 +17,14 @@ public class BlockRailJunction extends BlockSpecialRailBase {
 
     public BlockRailJunction() {
         super(false);
-        setCreativeTab(StevesCarts.tabsSC2Blocks);        
+        setCreativeTab(StevesCarts.tabsSC2Blocks);
     }
 
     @Override
     public IIcon getIcon(int side, int meta) {
         return meta >= 6 ? cornerIcon : normalIcon;
     }
-    
+
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister register) {
@@ -32,21 +33,22 @@ public class BlockRailJunction extends BlockSpecialRailBase {
     }
 
     /**
-     *  Return true if the rail can go up and down slopes
+     * Return true if the rail can go up and down slopes
      */
     @Override
     public boolean canMakeSlopes(IBlockAccess world, int x, int y, int z) {
         return false;
     }
 
-    /*  Return the rails metadata
+    /*
+     * Return the rails metadata
      */
     @Override
     public int getBasicRailMetadata(IBlockAccess world, EntityMinecart cart, int x, int y, int z) {
         if (cart instanceof MinecartModular) {
-            MinecartModular modularCart = (MinecartModular)cart;
+            MinecartModular modularCart = (MinecartModular) cart;
 
-            int meta = modularCart.getRailMeta(x,y,z);
+            int meta = modularCart.getRailMeta(x, y, z);
 
             if (meta != -1) {
                 return meta;

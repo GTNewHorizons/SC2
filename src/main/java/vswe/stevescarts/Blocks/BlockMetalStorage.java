@@ -1,13 +1,14 @@
 package vswe.stevescarts.Blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
+
 import vswe.stevescarts.Items.ModItems;
 import vswe.stevescarts.StevesCarts;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMetalStorage extends Block implements IBlockBase {
 
@@ -15,23 +16,23 @@ public class BlockMetalStorage extends Block implements IBlockBase {
         super(Material.iron);
         this.setCreativeTab(StevesCarts.tabsSC2Blocks);
     }
-    
-    @SideOnly(Side.CLIENT)
-	@Override
-    public IIcon getIcon(int side, int meta) {
-    	meta %= ModItems.storages.icons.length;
 
-    	return ModItems.storages.icons[meta];
+    @SideOnly(Side.CLIENT)
+    @Override
+    public IIcon getIcon(int side, int meta) {
+        meta %= ModItems.storages.icons.length;
+
+        return ModItems.storages.icons[meta];
     }
-    
+
     public int damageDropped(int meta) {
         return meta;
-    }    
+    }
 
     @SideOnly(Side.CLIENT)
-	@Override
+    @Override
     public void registerBlockIcons(IIconRegister register) {
-    	//do nothing here
+        // do nothing here
     }
 
     private String unlocalizedName;
@@ -47,4 +48,3 @@ public class BlockMetalStorage extends Block implements IBlockBase {
     }
 
 }
-

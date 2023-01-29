@@ -1,3 +1,4 @@
 package vswe.stevescarts.Slots;
 
-public interface ISlotExplosions {}
+public interface ISlotExplosions {
+}

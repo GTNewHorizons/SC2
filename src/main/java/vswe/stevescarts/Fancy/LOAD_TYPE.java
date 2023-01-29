@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public enum LOAD_TYPE {
+
     KEEP("Keep"),
     OVERRIDE("Override"),
     REQUIRE("Require");

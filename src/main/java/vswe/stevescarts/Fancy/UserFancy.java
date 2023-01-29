@@ -1,18 +1,19 @@
 package vswe.stevescarts.Fancy;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.renderer.ThreadDownloadImageData;
-import net.minecraft.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.renderer.ThreadDownloadImageData;
+
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 @SideOnly(Side.CLIENT)
 public class UserFancy {
+
     private FancyPancyHandler fancyPancyHandler;
     private FancyPancy activeFancyPancy;
     private int activeCheck = 100;
@@ -44,15 +45,15 @@ public class UserFancy {
             if (fancyData != null) {
                 Thread thread = ReflectionHelper.getPrivateValue(ThreadDownloadImageData.class, fancyData, 5);
                 if (thread != null && !thread.isAlive()) {
-                    //1 finished looking for fancy
-                    //2 managed to download a fancy
-                    //3 has Mojang fancy path
+                    // 1 finished looking for fancy
+                    // 2 managed to download a fancy
+                    // 3 has Mojang fancy path
 
                     hasMojangFancy = FancyPancyLoader.isImageReady(fancyData);
                     doneMojangFancyCheck = true;
                     updateActive(player);
                 }
-            }else{
+            } else {
                 doneMojangFancyCheck = true;
                 updateActive(player);
             }
@@ -65,8 +66,6 @@ public class UserFancy {
         if (!doneMojangFancyCheck) {
             return;
         }
-
-
 
         int highest = Integer.MIN_VALUE;
         for (FancyPancy fancyPancy : fancies) {
@@ -92,7 +91,8 @@ public class UserFancy {
     }
 
     private boolean isUsingMojangFancy(AbstractClientPlayer player) {
-        return hasMojangFancy && fancyPancyHandler.getDefaultResource(player).equals(fancyPancyHandler.getCurrentResource(player));
+        return hasMojangFancy
+                && fancyPancyHandler.getDefaultResource(player).equals(fancyPancyHandler.getCurrentResource(player));
     }
 
     public void add(FancyPancy fancyPancy) {
@@ -102,8 +102,8 @@ public class UserFancy {
     public String getImage(AbstractClientPlayer player) {
         if (activeFancyPancy != null) {
             return activeFancyPancy.getImage();
-        }else {
-            //always go back to the default fancy (even if it doesn't exist)
+        } else {
+            // always go back to the default fancy (even if it doesn't exist)
             return fancyPancyHandler.getDefaultUrl(player);
         }
     }

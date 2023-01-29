@@ -1,11 +1,12 @@
 package vswe.stevescarts.Helpers;
 
-
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
 import vswe.stevescarts.Items.ModItems;
 
 public enum ComponentTypes {
+
     WOODEN_WHEELS(0, "Wooden Wheels"),
     IRON_WHEELS(1, "Iron Wheels"),
     RED_PIGMENT(2, "Red Pigment"),
@@ -22,7 +23,7 @@ public enum ComponentTypes {
     SPEED_HANDLE(13, "Speed Handle"),
     WHEEL(14, "Wheel"),
     SAW_BLADE(15, "Saw Blade"),
-    ADVANCED_PCB(16,"Advanced PCB"),
+    ADVANCED_PCB(16, "Advanced PCB"),
     WOOD_CUTTING_CORE(17, "Wood Cutting Core"),
     RAW_HARDENER(18, "Raw Hardener"),
     REFINED_HARDENER(19, "Refined Hardener"),
@@ -94,9 +95,10 @@ public enum ComponentTypes {
 
     private int id;
     private String name;
+
     ComponentTypes(int id, String name) {
-       this.id = id;
-       this.name = name;
+        this.id = id;
+        this.name = name;
     }
 
     public String getName() {

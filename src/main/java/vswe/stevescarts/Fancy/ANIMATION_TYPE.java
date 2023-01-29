@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public enum ANIMATION_TYPE {
+
     STILL("Still"),
     ANIMATION("Loop"),
     PAUSE("Pause"),

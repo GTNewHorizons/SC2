@@ -1,42 +1,39 @@
 package vswe.stevescarts.Fancy;
 
+import java.util.HashMap;
+import java.util.Map;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.ReflectionHelper;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.entity.RendererLivingEntity;
-import net.minecraft.client.renderer.texture.ITextureObject;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.common.MinecraftForge;
+
 import org.lwjgl.opengl.GL11;
 
-import java.util.HashMap;
-import java.util.Map;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class OverheadHandler extends FancyPancyHandler {
 
     private ModelRenderer model;
 
-
     private Map<String, OverheadData> dataObjects;
 
     private class OverheadData {
+
         private ResourceLocation resourceLocation;
         private ThreadDownloadImageData image;
 
@@ -107,38 +104,43 @@ public class OverheadHandler extends FancyPancyHandler {
     public void render(RenderLivingEvent.Specials.Post event) {
 
         if (event.entity instanceof AbstractClientPlayer && event.renderer instanceof RenderPlayer) {
-            AbstractClientPlayer player = (AbstractClientPlayer)event.entity;
-            RenderPlayer renderer = (RenderPlayer)event.renderer;
+            AbstractClientPlayer player = (AbstractClientPlayer) event.entity;
+            RenderPlayer renderer = (RenderPlayer) event.renderer;
             EntityPlayer observer = Minecraft.getMinecraft().thePlayer;
             boolean isObserver = player == observer;
 
             double distanceSq = player.getDistanceSqToEntity(observer);
-            double distanceLimit = player.isSneaking() ? RendererLivingEntity.NAME_TAG_RANGE_SNEAK : RendererLivingEntity.NAME_TAG_RANGE;
+            double distanceLimit = player.isSneaking() ? RendererLivingEntity.NAME_TAG_RANGE_SNEAK
+                    : RendererLivingEntity.NAME_TAG_RANGE;
 
             if (distanceSq < distanceLimit * distanceLimit) {
                 if (player.isPlayerSleeping()) {
                     renderOverHead(renderer, player, event.x, event.y - 1.5D, event.z, isObserver);
-                }else{
+                } else {
                     renderOverHead(renderer, player, event.x, event.y, event.z, isObserver);
                 }
             }
 
-
         }
     }
 
-    private void renderOverHead(RenderPlayer renderer, AbstractClientPlayer player, double x, double y, double z, boolean isObserver) {
+    private void renderOverHead(RenderPlayer renderer, AbstractClientPlayer player, double x, double y, double z,
+            boolean isObserver) {
         OverheadData data = getData(player);
         if (FancyPancyLoader.isImageReady(data.image)) {
             RenderManager renderManager = ReflectionHelper.getPrivateValue(Render.class, renderer, 1);
-            //check if it's in an inventory
-            if (isObserver && player.openContainer != null && renderManager.playerViewY == 180 /* set to 180 when rendering, it might be 180 at other points but won't be the end of the world*/) {
+            // check if it's in an inventory
+            if (isObserver && player.openContainer != null
+                    && renderManager.playerViewY == 180 /*
+                                                         * set to 180 when rendering, it might be 180 at other points
+                                                         * but won't be the end of the world
+                                                         */) {
                 return;
             }
             renderManager.renderEngine.bindTexture(data.resourceLocation);
 
             GL11.glPushMatrix();
-            GL11.glTranslatef((float)x, (float)y + player.height + (isObserver ? 0.8F : 1.1F), (float)z);
+            GL11.glTranslatef((float) x, (float) y + player.height + (isObserver ? 0.8F : 1.1F), (float) z);
             GL11.glNormal3f(0, 1, 0);
             GL11.glRotatef(-renderManager.playerViewY, 0, 1, 0);
             GL11.glRotatef(renderManager.playerViewX, 1, 0, 0);
@@ -150,8 +152,6 @@ public class OverheadHandler extends FancyPancyHandler {
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.8F);
             model.render(0.015F);
 
-
-
             GL11.glEnable(GL11.GL_LIGHTING);
             GL11.glDisable(GL11.GL_BLEND);
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -159,6 +159,5 @@ public class OverheadHandler extends FancyPancyHandler {
             GL11.glPopMatrix();
         }
     }
-
 
 }

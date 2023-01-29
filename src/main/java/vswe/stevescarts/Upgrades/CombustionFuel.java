@@ -1,20 +1,16 @@
 package vswe.stevescarts.Upgrades;
 
-
 import vswe.stevescarts.Helpers.Localization;
 
 public class CombustionFuel extends BaseEffect {
 
+    public CombustionFuel() {
+        super();
+    }
 
-
-	public CombustionFuel() {
-		super();
-	}
-	
-	@Override
-	public String getName() {
-		return Localization.UPGRADES.COMBUSTION.translate();
-	}
-	
+    @Override
+    public String getName() {
+        return Localization.UPGRADES.COMBUSTION.translate();
+    }
 
 }

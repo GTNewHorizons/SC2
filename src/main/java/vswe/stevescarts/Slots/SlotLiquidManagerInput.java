@@ -1,40 +1,36 @@
 package vswe.stevescarts.Slots;
+
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidContainerRegistry;
+
 import vswe.stevescarts.Helpers.Tank;
 import vswe.stevescarts.TileEntities.TileEntityLiquid;
-public class SlotLiquidManagerInput extends SlotBase
-{
-	private TileEntityLiquid manager;
-	private int tankid;
-    public SlotLiquidManagerInput(TileEntityLiquid manager, int tankid, int i, int j, int k)
-    {
+
+public class SlotLiquidManagerInput extends SlotBase {
+
+    private TileEntityLiquid manager;
+    private int tankid;
+
+    public SlotLiquidManagerInput(TileEntityLiquid manager, int tankid, int i, int j, int k) {
         super(manager, i, j, k);
-		this.manager = manager;
-		this.tankid = tankid;
+        this.manager = manager;
+        this.tankid = tankid;
     }
 
-
-    public boolean isItemValid(ItemStack itemstack)
-    {
-    	return isItemStackValid(itemstack, this.manager, this.tankid);
+    public boolean isItemValid(ItemStack itemstack) {
+        return isItemStackValid(itemstack, this.manager, this.tankid);
     }
-    
-    public static boolean isItemStackValid(ItemStack itemstack, TileEntityLiquid manager, int tankid)
-    {
-    	if (tankid < 0 || tankid >= 4) {
-    		return FluidContainerRegistry.isContainer(itemstack);
-    	}
-    	
-		Tank tank = manager.getTanks()[tankid];
-	
-        return 
-		(FluidContainerRegistry.isEmptyContainer(itemstack) && tank.getFluid() != null) ||
-		(FluidContainerRegistry.isFilledContainer(itemstack) && (
-			tank.getFluid() == null ||
-			tank.getFluid().isFluidEqual(FluidContainerRegistry.getFluidForFilledItem(itemstack))
-		));
-		
 
-    }   
+    public static boolean isItemStackValid(ItemStack itemstack, TileEntityLiquid manager, int tankid) {
+        if (tankid < 0 || tankid >= 4) {
+            return FluidContainerRegistry.isContainer(itemstack);
+        }
+
+        Tank tank = manager.getTanks()[tankid];
+
+        return (FluidContainerRegistry.isEmptyContainer(itemstack) && tank.getFluid() != null)
+                || (FluidContainerRegistry.isFilledContainer(itemstack) && (tank.getFluid() == null
+                        || tank.getFluid().isFluidEqual(FluidContainerRegistry.getFluidForFilledItem(itemstack))));
+
+    }
 }

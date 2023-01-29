@@ -1,9 +1,7 @@
 package vswe.stevescarts.Slots;
 
+public interface ISpecialSlotValidator {
 
-public interface ISpecialSlotValidator
-{
+    public boolean isSlotValid();
 
-	public boolean isSlotValid();
-	
 }

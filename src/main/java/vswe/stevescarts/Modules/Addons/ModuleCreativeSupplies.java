@@ -4,8 +4,8 @@ import vswe.stevescarts.Carts.MinecartModular;
 
 public class ModuleCreativeSupplies extends ModuleAddon {
 
-	public ModuleCreativeSupplies(MinecartModular cart) {
-		super(cart);
-	}
+    public ModuleCreativeSupplies(MinecartModular cart) {
+        super(cart);
+    }
 
 }

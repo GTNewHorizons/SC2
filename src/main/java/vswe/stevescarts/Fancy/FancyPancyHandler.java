@@ -1,31 +1,27 @@
 package vswe.stevescarts.Fancy;
 
-
-import java.io.File;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.renderer.IImageBuffer;
-import net.minecraft.client.renderer.ImageBufferDownload;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.ITextureObject;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
+
+import vswe.stevescarts.Helpers.ResourceHelper;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import vswe.stevescarts.Helpers.ResourceHelper;
-
-
 
 @SideOnly(Side.CLIENT)
 public abstract class FancyPancyHandler {
@@ -43,20 +39,18 @@ public abstract class FancyPancyHandler {
     }
 
     private final String code;
+
     public FancyPancyHandler(String code) {
         this.code = code;
         FMLCommonHandler.instance().bus().register(this);
-		fancies = new HashMap<String,UserFancy>();
+        fancies = new HashMap<String, UserFancy>();
         serverFancies = new HashMap<String, ServerFancy>();
-	}
-
+    }
 
     private static final int PROTOCOL_VERSION = 0;
 
-
-
-    private HashMap<String,UserFancy> fancies;
-    private HashMap<String,ServerFancy> serverFancies;
+    private HashMap<String, UserFancy> fancies;
+    private HashMap<String, ServerFancy> serverFancies;
     private boolean ready = false;
     private String serverHash;
     private int serverReHash;
@@ -71,14 +65,15 @@ public abstract class FancyPancyHandler {
         if (data != null) {
             if (data.serverIP.equals("127.0.0.1")) {
                 ip = "localhost";
-            }else{
+            } else {
                 ip = data.serverIP;
             }
-        }else if (Minecraft.getMinecraft().getIntegratedServer() != null && Minecraft.getMinecraft().getIntegratedServer().getPublic()){
-            ip = "localhost";
-        }else{
-            ip = "single player";
-        }
+        } else if (Minecraft.getMinecraft().getIntegratedServer() != null
+                && Minecraft.getMinecraft().getIntegratedServer().getPublic()) {
+                    ip = "localhost";
+                } else {
+                    ip = "single player";
+                }
 
         serverHash = md5(ip.toLowerCase());
         serverReHash = 100;
@@ -104,7 +99,7 @@ public abstract class FancyPancyHandler {
                 result += Integer.toString((b & 0xff) + 0x100, 16).substring(1);
             }
             return result;
-        }catch (NoSuchAlgorithmException ignored) {}
+        } catch (NoSuchAlgorithmException ignored) {}
 
         return null;
     }
@@ -118,9 +113,7 @@ public abstract class FancyPancyHandler {
             serverReHash--;
         }
 
-
         EntityPlayer player = event.player;
-
 
         if (player instanceof AbstractClientPlayer) {
             loadNewFancy((AbstractClientPlayer) player);
@@ -128,9 +121,7 @@ public abstract class FancyPancyHandler {
 
     }
 
-
-	
-	private void loadNewFancy(AbstractClientPlayer player) {
+    private void loadNewFancy(AbstractClientPlayer player) {
         if (player != null) {
 
             String username = StringUtils.stripControlCodes(player.getDisplayName());
@@ -152,31 +143,38 @@ public abstract class FancyPancyHandler {
                     }
                 }
             }
-		}		
-	}
+        }
+    }
 
     public ThreadDownloadImageData tryToDownloadFancy(ResourceLocation fancy, String fancyUrl) {
         return tryToDownloadFancy(fancy, fancyUrl, null, null);
     }
 
-    public ThreadDownloadImageData tryToDownloadFancy(ResourceLocation fancy, String fancyUrl, ResourceLocation fallbackResource, IImageBuffer optionalBuffer) {
+    public ThreadDownloadImageData tryToDownloadFancy(ResourceLocation fancy, String fancyUrl,
+            ResourceLocation fallbackResource, IImageBuffer optionalBuffer) {
         TextureManager texturemanager = Minecraft.getMinecraft().getTextureManager();
         ITextureObject object = texturemanager.getTexture(fancy);
 
-        //no need to download the fancy if we have it already
+        // no need to download the fancy if we have it already
         if (object == null) {
             object = new ThreadDownloadImageData(null, fancyUrl, fallbackResource, optionalBuffer);
             texturemanager.loadTexture(fancy, object);
         }
 
-        return (ThreadDownloadImageData)object;
+        return (ThreadDownloadImageData) object;
     }
 
     public abstract String getDefaultUrl(AbstractClientPlayer player);
+
     public abstract ResourceLocation getDefaultResource(AbstractClientPlayer player);
+
     public abstract ThreadDownloadImageData getCurrentTexture(AbstractClientPlayer player);
+
     public abstract ResourceLocation getCurrentResource(AbstractClientPlayer player);
+
     public abstract void setCurrentResource(AbstractClientPlayer player, ResourceLocation resource, String url);
+
     public abstract LOAD_TYPE getDefaultLoadType();
+
     public abstract String getDefaultUrl();
 }

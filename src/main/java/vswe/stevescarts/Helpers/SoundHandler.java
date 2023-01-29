@@ -5,6 +5,7 @@ import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSound;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -16,7 +17,6 @@ public class SoundHandler {
         Minecraft.getMinecraft().getSoundHandler().playSound(soundObj);
     }
 
-
     public static void playSound(String name, float volume, float pitch) {
         playDefaultSound("stevescarts:" + name, volume, pitch);
     }
@@ -24,6 +24,7 @@ public class SoundHandler {
     private static class PlayerSound extends PositionedSound {
 
         private EntityPlayer player;
+
         protected PlayerSound(EntityPlayer player, String name, float volume, float pitch) {
             super(new ResourceLocation(name));
 
@@ -33,14 +34,11 @@ public class SoundHandler {
             update();
         }
 
-
         private void update() {
-            xPosF = (float)player.posX;
-            yPosF = (float)player.posY;
-            zPosF = (float)player.posZ;
+            xPosF = (float) player.posX;
+            yPosF = (float) player.posY;
+            zPosF = (float) player.posZ;
         }
 
     }
 }
-
-	

@@ -8,31 +8,26 @@ import vswe.stevescarts.StevesCarts;
 
 public class ItemBlockDetector extends ItemBlock {
 
-   
-    public ItemBlockDetector(Block b)
-    {
+    public ItemBlockDetector(Block b) {
         super(b);
         setHasSubtypes(true);
         setMaxDamage(0);
-        setCreativeTab(StevesCarts.tabsSC2Blocks);		
+        setCreativeTab(StevesCarts.tabsSC2Blocks);
     }
 
+    @Override
+    public String getUnlocalizedName(ItemStack item) {
 
- 	@Override
-    public String getUnlocalizedName(ItemStack item)
-    {
+        if (item != null) {
+            return "item." + StevesCarts.localStart + "BlockDetector" + item.getItemDamage();
+        }
 
-		if (item != null) {
-			return "item." + StevesCarts.localStart + "BlockDetector" + item.getItemDamage();
-		}	
-	
         return "item.unknown";
-    }	
+    }
 
- 	
     @Override
     public int getMetadata(int dmg) {
         return dmg;
-    } 	
+    }
 
 }

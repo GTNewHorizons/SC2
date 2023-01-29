@@ -1,14 +1,15 @@
 package vswe.stevescarts.Helpers;
 
-
 import net.minecraft.util.StatCollector;
 
 public final class Localization {
+
     private Localization() {}
 
     public static class GUI {
 
         public static enum ASSEMBLER {
+
             TITLE("cartAssembler"),
             ASSEMBLE_INSTRUCTION("basicAssembleInstruction"),
             INVALID_HULL("invalidHullError"),
@@ -29,17 +30,18 @@ public final class Localization {
             DEPARTURE_BAY("departureBayError");
 
             private String name;
+
             ASSEMBLER(String name) {
                 this.name = name;
             }
 
-
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("gui.SC2:" + name, vars);
             }
         }
 
         public static enum MANAGER {
+
             TITLE("manager"),
             CURRENT_SETTING("currentSetting"),
             CHANGE_TRANSFER_DIRECTION("changeTransferDirection"),
@@ -58,19 +60,19 @@ public final class Localization {
             SIDE_GREEN("sideGreen"),
             SIDE_DISABLED("sideDisabled");
 
-
             private String name;
+
             MANAGER(String name) {
                 this.name = name;
             }
 
-
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("gui.SC2:" + name, vars);
             }
         }
 
         public static enum CARGO {
+
             TITLE("cargoManager"),
             CHANGE_SLOT_LAYOUT("changeSlotLayout"),
             LAYOUT_SHARED("layoutShared"),
@@ -99,22 +101,19 @@ public final class Localization {
             AREA_BUCKETS("cartAreaBuckets"),
             AREA_CAKES("cartAreaCakes");
 
-
-
-
-
             private String name;
+
             CARGO(String name) {
                 this.name = name;
             }
 
-
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("gui.SC2:" + name, vars);
             }
         }
 
         public static enum LIQUID {
+
             TITLE("liquidManager"),
             CHANGE_LAYOUT("changeTankLayout"),
             LAYOUT_ALL("layoutSharedTanks"),
@@ -125,19 +124,19 @@ public final class Localization {
             TRANSFER_ALL_SHORT("transferAllLiquidShort"),
             TRANSFER_BUCKET_SHORT("transferBucketShort");
 
-
             private String name;
+
             LIQUID(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("gui.SC2:" + name, vars);
             }
         }
 
-
         public static enum TOGGLER {
+
             TITLE("moduleToggler"),
             OPTION_DRILL("optionDrill"),
             OPTION_SHIELD("optionShield"),
@@ -152,18 +151,19 @@ public final class Localization {
             STATE_DEACTIVATE("stateDeactivate"),
             STATE_TOGGLE("stateToggle");
 
-
             private String name;
+
             TOGGLER(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("gui.SC2:" + name, vars);
             }
         }
 
         public static enum DISTRIBUTOR {
+
             TITLE("externalDistributor"),
             NOT_CONNECTED("distributorNotConnected"),
             SIDE("sideName"),
@@ -190,19 +190,19 @@ public final class Localization {
             SIDE_RED("distributorSideRed"),
             SIDE_TOOL_TIP("sideToolTip");
 
-
-
             private String name;
+
             DISTRIBUTOR(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("gui.SC2:" + name, vars);
             }
         }
 
         public static enum DETECTOR {
+
             OUTPUT("operatorOutput"),
             AND("operatorAnd"),
             OR("operatorOr"),
@@ -271,17 +271,13 @@ public final class Localization {
             TANK_EMPTY("stateTankEmpty"),
             CAKE("stateCake");
 
-
-
-
-
-
             private String name;
+
             DETECTOR(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("gui.SC2:" + name, vars);
             }
         }
@@ -289,6 +285,7 @@ public final class Localization {
     }
 
     public static enum MODULE_INFO {
+
         ENGINE_GROUP("moduleGroupEngine"),
         DRILL_GROUP("moduleGroupDrill"),
         FARMER_GROUP("moduleGroupFarmer"),
@@ -345,18 +342,19 @@ public final class Localization {
         MAX_ENGINES("maxEngineCount"),
         MAX_ADDONS("maxAddonCount");
 
-
         private String name;
+
         MODULE_INFO(String name) {
             this.name = name;
         }
 
-        public String translate(String ... vars) {
+        public String translate(String... vars) {
             return doTranslate("info.SC2:" + name, vars);
         }
     }
 
     public static enum UPGRADES {
+
         BLUEPRINT("effectBlueprint"),
         COMBUSTION("effectCombustionFuel"),
         DEPLOYER("effectDeployer"),
@@ -375,14 +373,13 @@ public final class Localization {
         TRANSPOSER("effectTransposer"),
         EFFICIENCY("effectEfficiency");
 
-
-
         private String name;
+
         UPGRADES(String name) {
             this.name = name;
         }
 
-        public String translate(String ... vars) {
+        public String translate(String... vars) {
             return doTranslate("info.SC2:" + name, vars);
         }
     }
@@ -390,6 +387,7 @@ public final class Localization {
     public static class MODULES {
 
         public static enum ADDONS {
+
             BUTTON_RANDOMIZE("buttonRandomize"),
             DETECTOR_ANIMALS("detectorAnimals"),
             DETECTOR_BATS("detectorBats"),
@@ -397,8 +395,8 @@ public final class Localization {
             DETECTOR_PLAYERS("detectorPlayers"),
             DETECTOR_VILLAGERS("detectorVillagers"),
             PLANTER_RANGE("planterRangeExtenderTitle"),
-            SAPLING_AMOUNT("saplingPlantAmount") ,
-            CONTROL_LEVER("controlLeverTitle") ,
+            SAPLING_AMOUNT("saplingPlantAmount"),
+            CONTROL_LEVER("controlLeverTitle"),
             LEVER_START("leverStartCart"),
             LEVER_STOP("leverStopCart"),
             LEVER_TURN("leverTurnAroundCart"),
@@ -444,16 +442,18 @@ public final class Localization {
             SHIELD("shieldToggle");
 
             private String name;
+
             ADDONS(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("modules.addons.SC2:" + name, vars);
             }
         }
 
         public static enum ENGINES {
+
             OVER_9000("creativePowerLevel"),
             COAL("coalEngineTitle"),
             NO_FUEL("outOfFuel"),
@@ -468,20 +468,19 @@ public final class Localization {
             ENGINE_DISABLED("engineDisabledMessage"),
             ENGINE_PRIORITY("enginePriorityMessage");
 
-
-
-
             private String name;
+
             ENGINES(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("modules.engines.SC2:" + name, vars);
             }
         }
 
         public static enum TANKS {
+
             CREATIVE_MODE("creativeTankMode"),
             CHANGE_MODE("creativeTankChangeMode"),
             RESET_MODE("creativeTankResetMode"),
@@ -492,16 +491,18 @@ public final class Localization {
             INVALID("tankInvalidFluid");
 
             private String name;
+
             TANKS(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("modules.tanks.SC2:" + name, vars);
             }
         }
 
         public static enum TOOLS {
+
             DURABILITY("toolDurability"),
             BROKEN("toolBroken"),
             REPAIRING("toolRepairing"),
@@ -516,18 +517,19 @@ public final class Localization {
             FARMER("farmerTitle"),
             CUTTER("cutterTitle");
 
-
             private String name;
+
             TOOLS(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("modules.tools.SC2:" + name, vars);
             }
         }
 
         public static enum ATTACHMENTS {
+
             FERTILIZERS("fertilizers"),
             RAILER("railerTitle"),
             CONTROL_SYSTEM("controlSystemTitle"),
@@ -564,26 +566,21 @@ public final class Localization {
             SEAT_MESSAGE("seatStateMessage"),
             CONTROL_RESET("controlSystemReset");
 
-
-
-
-
-
-
             private String name;
+
             ATTACHMENTS(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("modules.attachments.SC2:" + name, vars);
             }
         }
 
     }
 
-
     public static enum ARCADE {
+
         GHAST("ghastInvaders"),
         EXTRA_LIVES("ghastLives"),
         HIGH_SCORE("highScore"),
@@ -640,24 +637,24 @@ public final class Localization {
         BUTTON_SAVE_AS("buttonSaveAs"),
         BUTTON_CANCEL("buttonCancel"),
 
-
         MADNESS("forgecraftMadness");
 
-
         private String name;
+
         ARCADE(String name) {
             this.name = name;
         }
 
-        public String translate(String ... vars) {
+        public String translate(String... vars) {
             return doTranslate("arcade.SC2:" + name, vars);
         }
-
 
     }
 
     public static class STORIES {
+
         public static enum THE_BEGINNING {
+
             MAP_EDITOR("mapEditor"),
             TITLE("title"),
             MISSION("mission"),
@@ -685,22 +682,19 @@ public final class Localization {
             LEVEL_8("level8"),
             LEVEL_9("level9");
 
-
-
-
-
             private String name;
+
             THE_BEGINNING(String name) {
                 this.name = name;
             }
 
-            public String translate(String ... vars) {
+            public String translate(String... vars) {
                 return doTranslate("stories.beginning.SC2:" + name, vars);
             }
         }
     }
 
-    private static String doTranslate(String name, String...vars) {
+    private static String doTranslate(String name, String... vars) {
         String result = StatCollector.translateToLocal(name);
         for (int i = 0; i < vars.length; i++) {
             String pluralCheck = "[%" + (i + 1) + ":";
@@ -716,11 +710,11 @@ public final class Localization {
                         String option = options[optionId];
                         result = result.substring(0, index) + option + result.substring(endIndex + 1);
 
-                        //restart
+                        // restart
                         i--;
                     }
                 }
-            }else{
+            } else {
                 String listCheck = "[%" + (i + 1) + "->";
                 int index2 = result.indexOf(listCheck);
                 if (index2 != -1) {
@@ -734,11 +728,11 @@ public final class Localization {
                             String option = options[optionId];
                             result = result.substring(0, index2) + option + result.substring(endIndex + 1);
 
-                            //restart
+                            // restart
                             i--;
                         }
                     }
-                }else{
+                } else {
                     result = result.replace("[%" + (i + 1) + "]", vars[i]);
                 }
             }

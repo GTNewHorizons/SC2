@@ -1,20 +1,19 @@
 package vswe.stevescarts.Arcade;
 
-
 public class Villager extends CardPlace {
 
-	public Villager(ArcadeMonopoly game) {
-		super(game);
-	}
+    public Villager(ArcadeMonopoly game) {
+        super(game);
+    }
 
-	@Override
-	protected int getTextureId() {
-		return 9;
-	}
+    @Override
+    protected int getTextureId() {
+        return 9;
+    }
 
-	@Override
-	public Card getCard() {
-		return CardVillager.cards.get(game.getModule().getCart().rand.nextInt(CardVillager.cards.size()));
-	}
-	
+    @Override
+    public Card getCard() {
+        return CardVillager.cards.get(game.getModule().getCart().rand.nextInt(CardVillager.cards.size()));
+    }
+
 }

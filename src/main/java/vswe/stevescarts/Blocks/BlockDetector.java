@@ -13,8 +13,9 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import vswe.stevescarts.StevesCarts;
+
 import vswe.stevescarts.Helpers.DetectorType;
+import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.TileEntities.TileEntityDetector;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -24,28 +25,28 @@ public class BlockDetector extends BlockContainerBase {
 
     public BlockDetector() {
         super(Material.circuits);
-        setCreativeTab(StevesCarts.tabsSC2Blocks);		
+        setCreativeTab(StevesCarts.tabsSC2Blocks);
     }
 
     @SideOnly(Side.CLIENT)
-	@Override
-    public IIcon getIcon(int side, int meta) {        
+    @Override
+    public IIcon getIcon(int side, int meta) {
         return DetectorType.getTypeFromMeta(meta).getIcon(side);
     }
 
     @SideOnly(Side.CLIENT)
-	@Override
+    @Override
     public void registerBlockIcons(IIconRegister register) {
-    	for (DetectorType type : DetectorType.values()) {
-    		type.registerIcons(register);
-    	}
+        for (DetectorType type : DetectorType.values()) {
+            type.registerIcons(register);
+        }
     }
 
     @Override
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-    	for (DetectorType type : DetectorType.values()) {
-    		list.add(new ItemStack(item, 1, type.getMeta()));
-    	}
+        for (DetectorType type : DetectorType.values()) {
+            list.add(new ItemStack(item, 1, type.getMeta()));
+        }
     }
 
     @Override
@@ -63,34 +64,35 @@ public class BlockDetector extends BlockContainerBase {
         return true;
     }
 
-	@Override
-    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7, float par8, float par9) {
-		if (entityplayer.isSneaking()) {
-			return false;
-		}
+    @Override
+    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7,
+            float par8, float par9) {
+        if (entityplayer.isSneaking()) {
+            return false;
+        }
 
         if (world.isRemote) {
             return true;
         }
 
-		FMLNetworkHandler.openGui(entityplayer, StevesCarts.instance, 6, world, i, j, k);
+        FMLNetworkHandler.openGui(entityplayer, StevesCarts.instance, 6, world, i, j, k);
 
         return true;
     }
-	
+
     /**
      * Is this block powering the block on the specified side
      */
-	@Override
+    @Override
     public int isProvidingWeakPower(IBlockAccess world, int x, int y, int z, int side) {
-		int meta = world.getBlockMetadata(x, y, z);
-		return ((meta & 8) != 0 && DetectorType.getTypeFromMeta(meta).shouldEmitRedstone()) ? 15 : 0;
+        int meta = world.getBlockMetadata(x, y, z);
+        return ((meta & 8) != 0 && DetectorType.getTypeFromMeta(meta).shouldEmitRedstone()) ? 15 : 0;
     }
 
     /**
      * Is this block indirectly powering the block on the specified side
      */
-	@Override
+    @Override
     public int isProvidingStrongPower(IBlockAccess world, int x, int y, int z, int side) {
         return 0;
     }
@@ -98,7 +100,7 @@ public class BlockDetector extends BlockContainerBase {
     /**
      * Can this block provide power. Only wire currently seems to have this change based on its state.
      */
-	@Override
+    @Override
     public boolean canProvidePower() {
         return true;
     }
@@ -117,8 +119,8 @@ public class BlockDetector extends BlockContainerBase {
     public TileEntity createNewTileEntity(World world, int var2) {
         return new TileEntityDetector();
     }
-	
-	@Override
+
+    @Override
     public int damageDropped(int meta) {
         return meta;
     }
