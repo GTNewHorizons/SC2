@@ -6,6 +6,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Containers.ContainerBase;
 import vswe.stevescarts.Containers.ContainerDetector;
@@ -13,8 +15,6 @@ import vswe.stevescarts.Helpers.DetectorType;
 import vswe.stevescarts.Helpers.LogicObject;
 import vswe.stevescarts.Interfaces.GuiBase;
 import vswe.stevescarts.Interfaces.GuiDetector;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityDetector extends TileEntityBase {
 

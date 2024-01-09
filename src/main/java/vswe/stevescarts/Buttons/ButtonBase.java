@@ -3,11 +3,11 @@ package vswe.stevescarts.Buttons;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 import vswe.stevescarts.Modules.ModuleBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ButtonBase {
 

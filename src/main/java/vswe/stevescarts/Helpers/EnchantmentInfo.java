@@ -7,8 +7,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
 
-import vswe.stevescarts.Helpers.EnchantmentInfo.ENCHANTMENT_TYPE;
-
 public class EnchantmentInfo {
 
     private Enchantment enchantment;

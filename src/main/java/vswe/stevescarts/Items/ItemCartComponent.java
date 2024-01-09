@@ -13,11 +13,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Helpers.ComponentTypes;
 import vswe.stevescarts.Helpers.EntityEasterEgg;
 import vswe.stevescarts.StevesCarts;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCartComponent extends Item {
 

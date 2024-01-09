@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Interfaces.GuiDetector;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.PacketHandler;
 import vswe.stevescarts.TileEntities.TileEntityDetector;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class LogicObject {
 

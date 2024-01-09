@@ -6,6 +6,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerUpgrade;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.Helpers.Tank;
@@ -13,8 +15,6 @@ import vswe.stevescarts.Interfaces.GuiUpgrade;
 import vswe.stevescarts.Slots.SlotLiquidOutput;
 import vswe.stevescarts.Slots.SlotLiquidUpgradeInput;
 import vswe.stevescarts.TileEntities.TileEntityUpgrade;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class TankEffect extends InventoryEffect {
 

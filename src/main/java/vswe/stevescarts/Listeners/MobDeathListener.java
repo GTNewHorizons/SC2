@@ -8,8 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
-import vswe.stevescarts.Helpers.ComponentTypes;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import vswe.stevescarts.Helpers.ComponentTypes;
 
 public class MobDeathListener {
 

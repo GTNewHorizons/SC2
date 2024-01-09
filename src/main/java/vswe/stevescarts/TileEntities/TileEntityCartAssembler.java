@@ -15,13 +15,21 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Blocks.BlockCartAssembler;
 import vswe.stevescarts.Blocks.ModBlocks;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Containers.ContainerBase;
 import vswe.stevescarts.Containers.ContainerCartAssembler;
 import vswe.stevescarts.Containers.ContainerUpgrade;
-import vswe.stevescarts.Helpers.*;
+import vswe.stevescarts.Helpers.DropDownMenuItem;
+import vswe.stevescarts.Helpers.Localization;
+import vswe.stevescarts.Helpers.ManagerTransfer;
+import vswe.stevescarts.Helpers.NBTHelper;
+import vswe.stevescarts.Helpers.SimulationInfo;
+import vswe.stevescarts.Helpers.TitleBox;
+import vswe.stevescarts.Helpers.TransferHandler;
 import vswe.stevescarts.Interfaces.GuiBase;
 import vswe.stevescarts.Interfaces.GuiCartAssembler;
 import vswe.stevescarts.Items.ItemCarts;
@@ -45,8 +53,6 @@ import vswe.stevescarts.Upgrades.TimeFlat;
 import vswe.stevescarts.Upgrades.TimeFlatCart;
 import vswe.stevescarts.Upgrades.TimeFlatRemoved;
 import vswe.stevescarts.Upgrades.WorkEfficiency;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The tile entity used by the Cart Assembler

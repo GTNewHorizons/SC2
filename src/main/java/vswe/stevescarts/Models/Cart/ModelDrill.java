@@ -3,10 +3,10 @@ package vswe.stevescarts.Models.Cart;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.util.ResourceLocation;
 
-import vswe.stevescarts.Modules.ModuleBase;
-import vswe.stevescarts.Modules.Workers.Tools.ModuleDrill;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Modules.ModuleBase;
+import vswe.stevescarts.Modules.Workers.Tools.ModuleDrill;
 
 @SideOnly(Side.CLIENT)
 public class ModelDrill extends ModelCartbase {

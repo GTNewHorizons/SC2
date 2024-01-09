@@ -2,7 +2,6 @@ package vswe.stevescarts.Arcade;
 
 import java.util.EnumSet;
 
-import vswe.stevescarts.Arcade.Place.PLACE_STATE;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 
 public abstract class Property extends Place {

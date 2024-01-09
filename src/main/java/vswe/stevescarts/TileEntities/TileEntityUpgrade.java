@@ -21,6 +21,8 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerBase;
 import vswe.stevescarts.Containers.ContainerUpgrade;
 import vswe.stevescarts.Helpers.ITankHolder;
@@ -32,8 +34,6 @@ import vswe.stevescarts.Interfaces.GuiUpgrade;
 import vswe.stevescarts.Upgrades.AssemblerUpgrade;
 import vswe.stevescarts.Upgrades.InterfaceEffect;
 import vswe.stevescarts.Upgrades.InventoryEffect;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityUpgrade extends TileEntityBase
         implements IInventory, ISidedInventory, IFluidHandler, IFluidTank, ITankHolder {

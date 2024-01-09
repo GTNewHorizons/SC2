@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.EnchantmentInfo.ENCHANTMENT_TYPE;
 import vswe.stevescarts.Helpers.Localization;
@@ -14,8 +16,6 @@ import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.Modules.Workers.ModuleWorker;
 import vswe.stevescarts.Slots.SlotBase;
 import vswe.stevescarts.Slots.SlotRepair;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ModuleTool extends ModuleWorker {
 

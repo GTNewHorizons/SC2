@@ -5,10 +5,10 @@ import net.minecraft.entity.item.EntityMinecart;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
-import vswe.stevescarts.Carts.MinecartModular;
-import vswe.stevescarts.StevesCarts;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Carts.MinecartModular;
+import vswe.stevescarts.StevesCarts;
 
 public class BlockRailJunction extends BlockSpecialRailBase {
 

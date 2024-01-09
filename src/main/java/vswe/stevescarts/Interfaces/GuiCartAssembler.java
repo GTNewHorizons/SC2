@@ -13,6 +13,8 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerCartAssembler;
 import vswe.stevescarts.Helpers.DropDownMenuItem;
 import vswe.stevescarts.Helpers.Localization;
@@ -25,8 +27,6 @@ import vswe.stevescarts.PacketHandler;
 import vswe.stevescarts.Slots.SlotAssembler;
 import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.TileEntities.TileEntityCartAssembler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiCartAssembler extends GuiBase {

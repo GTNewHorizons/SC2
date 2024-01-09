@@ -15,14 +15,14 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Items.ModItems;
 import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.TileEntities.TileEntityCartAssembler;
 import vswe.stevescarts.TileEntities.TileEntityUpgrade;
 import vswe.stevescarts.Upgrades.AssemblerUpgrade;
-import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockUpgrade extends BlockContainerBase {
 

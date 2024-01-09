@@ -9,13 +9,13 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.ModuleCountPair;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.Slots.SlotBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiMinecart extends GuiBase {

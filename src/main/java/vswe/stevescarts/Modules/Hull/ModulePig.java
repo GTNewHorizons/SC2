@@ -8,9 +8,9 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
-import vswe.stevescarts.Carts.MinecartModular;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Carts.MinecartModular;
 
 public class ModulePig extends ModuleHull {
 

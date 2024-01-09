@@ -9,14 +9,14 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Blocks.ModBlocks;
 import vswe.stevescarts.Containers.ContainerCargo;
 import vswe.stevescarts.Helpers.CargoItemSelection;
 import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.TileEntities.TileEntityCargo;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiCargo extends GuiManager {

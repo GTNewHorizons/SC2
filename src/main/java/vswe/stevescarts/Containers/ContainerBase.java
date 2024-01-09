@@ -9,11 +9,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Helpers.TransferHandler;
 import vswe.stevescarts.Helpers.TransferHandler.TRANSFER_TYPE;
 import vswe.stevescarts.TileEntities.TileEntityBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ContainerBase extends Container {
 

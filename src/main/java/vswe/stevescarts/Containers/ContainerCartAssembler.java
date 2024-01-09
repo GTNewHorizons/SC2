@@ -10,12 +10,12 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Slots.SlotAssembler;
 import vswe.stevescarts.Slots.SlotHull;
 import vswe.stevescarts.TileEntities.TileEntityBase;
 import vswe.stevescarts.TileEntities.TileEntityCartAssembler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerCartAssembler extends ContainerBase {
 

@@ -10,10 +10,10 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 
-import vswe.stevescarts.Helpers.TradeHandler;
-import vswe.stevescarts.Items.ModItems;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.registry.VillagerRegistry;
+import vswe.stevescarts.Helpers.TradeHandler;
+import vswe.stevescarts.Items.ModItems;
 
 public class MobInteractListener {
 

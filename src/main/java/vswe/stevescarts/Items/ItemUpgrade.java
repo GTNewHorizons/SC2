@@ -13,12 +13,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.TileEntities.TileEntityUpgrade;
 import vswe.stevescarts.Upgrades.AssemblerUpgrade;
 import vswe.stevescarts.Upgrades.BaseEffect;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemUpgrade extends ItemBlock {
 

@@ -7,10 +7,10 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.util.ResourceLocation;
 
-import vswe.stevescarts.Helpers.ResourceHelper;
-import vswe.stevescarts.Modules.ModuleBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Helpers.ResourceHelper;
+import vswe.stevescarts.Modules.ModuleBase;
 
 @SideOnly(Side.CLIENT)
 public abstract class ModelCartbase extends ModelBase {

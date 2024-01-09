@@ -7,6 +7,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerDetector;
 import vswe.stevescarts.Helpers.DetectorType;
 import vswe.stevescarts.Helpers.DropDownMenu;
@@ -17,8 +19,6 @@ import vswe.stevescarts.Helpers.OperatorObject;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.TileEntities.TileEntityDetector;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiDetector extends GuiBase {

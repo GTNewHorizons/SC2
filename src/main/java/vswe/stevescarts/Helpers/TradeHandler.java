@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 
-import vswe.stevescarts.Items.ModItems;
 import cpw.mods.fml.common.registry.VillagerRegistry;
+import vswe.stevescarts.Items.ModItems;
 
 public class TradeHandler implements VillagerRegistry.IVillageTradeHandler {
 

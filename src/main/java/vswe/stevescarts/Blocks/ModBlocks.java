@@ -9,6 +9,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import vswe.stevescarts.Helpers.ComponentTypes;
 import vswe.stevescarts.Helpers.RecipeHelper;
 import vswe.stevescarts.Items.ItemBlockDetector;
@@ -16,8 +17,13 @@ import vswe.stevescarts.Items.ItemBlockStorage;
 import vswe.stevescarts.Items.ItemUpgrade;
 import vswe.stevescarts.Items.ModItems;
 import vswe.stevescarts.StevesCarts;
-import vswe.stevescarts.TileEntities.*;
-import cpw.mods.fml.common.registry.GameRegistry;
+import vswe.stevescarts.TileEntities.TileEntityActivator;
+import vswe.stevescarts.TileEntities.TileEntityCargo;
+import vswe.stevescarts.TileEntities.TileEntityCartAssembler;
+import vswe.stevescarts.TileEntities.TileEntityDetector;
+import vswe.stevescarts.TileEntities.TileEntityDistributor;
+import vswe.stevescarts.TileEntities.TileEntityLiquid;
+import vswe.stevescarts.TileEntities.TileEntityUpgrade;
 
 public enum ModBlocks {
 

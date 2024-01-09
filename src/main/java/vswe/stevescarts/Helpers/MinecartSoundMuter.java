@@ -7,9 +7,9 @@ import net.minecraft.entity.item.EntityMinecart;
 import net.minecraftforge.client.event.sound.PlaySoundEvent17;
 import net.minecraftforge.common.MinecraftForge;
 
-import vswe.stevescarts.Carts.MinecartModular;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.ReflectionHelper;
+import vswe.stevescarts.Carts.MinecartModular;
 
 public class MinecartSoundMuter {
 

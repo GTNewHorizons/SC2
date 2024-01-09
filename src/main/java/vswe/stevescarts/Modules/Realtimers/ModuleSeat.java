@@ -3,13 +3,13 @@ package vswe.stevescarts.Modules.Realtimers;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 import vswe.stevescarts.Modules.ModuleBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModuleSeat extends ModuleBase {
 

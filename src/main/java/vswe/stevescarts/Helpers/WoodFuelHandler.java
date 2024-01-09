@@ -2,10 +2,10 @@ package vswe.stevescarts.Helpers;
 
 import net.minecraft.item.ItemStack;
 
-import vswe.stevescarts.Items.ItemCartComponent;
-import vswe.stevescarts.Items.ModItems;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+import vswe.stevescarts.Items.ItemCartComponent;
+import vswe.stevescarts.Items.ModItems;
 
 public class WoodFuelHandler implements IFuelHandler {
 

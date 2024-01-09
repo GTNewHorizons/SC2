@@ -6,10 +6,10 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.tileentity.TileEntity;
 
-import vswe.stevescarts.Containers.ContainerBase;
-import vswe.stevescarts.Interfaces.GuiBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Containers.ContainerBase;
+import vswe.stevescarts.Interfaces.GuiBase;
 
 public abstract class TileEntityBase extends TileEntity {
 

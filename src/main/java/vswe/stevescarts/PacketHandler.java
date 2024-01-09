@@ -15,14 +15,6 @@ import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.network.NetHandlerPlayServer;
 import net.minecraft.world.World;
 
-import vswe.stevescarts.Blocks.BlockCartAssembler;
-import vswe.stevescarts.Blocks.ModBlocks;
-import vswe.stevescarts.Carts.MinecartModular;
-import vswe.stevescarts.Containers.ContainerBase;
-import vswe.stevescarts.Containers.ContainerMinecart;
-import vswe.stevescarts.Modules.ModuleBase;
-import vswe.stevescarts.TileEntities.TileEntityBase;
-
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 
@@ -35,6 +27,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import vswe.stevescarts.Blocks.BlockCartAssembler;
+import vswe.stevescarts.Blocks.ModBlocks;
+import vswe.stevescarts.Carts.MinecartModular;
+import vswe.stevescarts.Containers.ContainerBase;
+import vswe.stevescarts.Containers.ContainerMinecart;
+import vswe.stevescarts.Modules.ModuleBase;
+import vswe.stevescarts.TileEntities.TileEntityBase;
 
 public class PacketHandler {
 

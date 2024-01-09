@@ -3,6 +3,8 @@ package vswe.stevescarts.Arcade;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Arcade.Tile.TILE_OPEN_RESULT;
 import vswe.stevescarts.Arcade.Tile.TILE_STATE;
 import vswe.stevescarts.Carts.MinecartModular;
@@ -10,8 +12,6 @@ import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 import vswe.stevescarts.Modules.Realtimers.ModuleArcade;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ArcadeSweeper extends ArcadeGame {
 

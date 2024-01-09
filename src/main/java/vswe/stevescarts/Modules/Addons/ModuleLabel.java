@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.LabelInformation;
 import vswe.stevescarts.Helpers.Localization;
@@ -15,8 +17,6 @@ import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.Modules.Workers.Tools.ModuleTool;
 import vswe.stevescarts.Slots.SlotBase;
 import vswe.stevescarts.Slots.SlotChest;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModuleLabel extends ModuleAddon {
 

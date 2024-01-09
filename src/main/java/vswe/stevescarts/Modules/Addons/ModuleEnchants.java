@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.EnchantmentData;
 import vswe.stevescarts.Helpers.EnchantmentInfo;
@@ -13,8 +15,6 @@ import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 import vswe.stevescarts.Slots.SlotBase;
 import vswe.stevescarts.Slots.SlotEnchantment;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModuleEnchants extends ModuleAddon {
 

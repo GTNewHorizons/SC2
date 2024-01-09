@@ -6,24 +6,6 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import vswe.stevescarts.Blocks.*;
-import vswe.stevescarts.Carts.MinecartModular;
-import vswe.stevescarts.Helpers.CraftingHandler;
-import vswe.stevescarts.Helpers.CreativeTabSC2;
-import vswe.stevescarts.Helpers.EntityCake;
-import vswe.stevescarts.Helpers.EntityEasterEgg;
-import vswe.stevescarts.Helpers.GiftItem;
-import vswe.stevescarts.Helpers.TradeHandler;
-import vswe.stevescarts.Helpers.WoodFuelHandler;
-import vswe.stevescarts.Items.*;
-import vswe.stevescarts.Listeners.ChunkListener;
-import vswe.stevescarts.Listeners.MobDeathListener;
-import vswe.stevescarts.Listeners.MobInteractListener;
-import vswe.stevescarts.Listeners.OverlayRenderer;
-import vswe.stevescarts.Listeners.PlayerSleepListener;
-import vswe.stevescarts.Listeners.TicketListener;
-import vswe.stevescarts.TileEntities.TileEntityCargo;
-import vswe.stevescarts.Upgrades.AssemblerUpgrade;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -35,6 +17,25 @@ import cpw.mods.fml.common.network.FMLEventChannel;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import vswe.stevescarts.Blocks.ModBlocks;
+import vswe.stevescarts.Carts.MinecartModular;
+import vswe.stevescarts.Helpers.CraftingHandler;
+import vswe.stevescarts.Helpers.CreativeTabSC2;
+import vswe.stevescarts.Helpers.EntityCake;
+import vswe.stevescarts.Helpers.EntityEasterEgg;
+import vswe.stevescarts.Helpers.GiftItem;
+import vswe.stevescarts.Helpers.TradeHandler;
+import vswe.stevescarts.Helpers.WoodFuelHandler;
+import vswe.stevescarts.Items.ItemBlockStorage;
+import vswe.stevescarts.Items.ModItems;
+import vswe.stevescarts.Listeners.ChunkListener;
+import vswe.stevescarts.Listeners.MobDeathListener;
+import vswe.stevescarts.Listeners.MobInteractListener;
+import vswe.stevescarts.Listeners.OverlayRenderer;
+import vswe.stevescarts.Listeners.PlayerSleepListener;
+import vswe.stevescarts.Listeners.TicketListener;
+import vswe.stevescarts.TileEntities.TileEntityCargo;
+import vswe.stevescarts.Upgrades.AssemblerUpgrade;
 
 @Mod(modid = "StevesCarts", name = "Steve's Carts 2", version = "GRADLETOKEN_VERSION")
 public class StevesCarts {

@@ -2,7 +2,6 @@ package vswe.stevescarts.Arcade;
 
 import java.util.ArrayList;
 
-import vswe.stevescarts.Arcade.TrackOrientation.DIRECTION;
 import vswe.stevescarts.Interfaces.GuiBase.RENDER_ROTATION;
 
 public abstract class TrackOrientation {

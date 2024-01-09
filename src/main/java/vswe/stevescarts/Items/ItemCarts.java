@@ -14,14 +14,14 @@ import net.minecraft.nbt.NBTTagByteArray;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.CartVersion;
 import vswe.stevescarts.Helpers.ColorHelper;
 import vswe.stevescarts.Helpers.ModuleCountPair;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.StevesCarts;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCarts extends ItemMinecart {
 

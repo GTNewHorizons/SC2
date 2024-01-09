@@ -27,6 +27,8 @@ import net.minecraftforge.common.util.FakePlayerFactory;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Buttons.ButtonBase;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Containers.ContainerMinecart;
@@ -39,8 +41,6 @@ import vswe.stevescarts.Models.Cart.ModelCartbase;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.PacketHandler;
 import vswe.stevescarts.Slots.SlotBase;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The base for all modules. This is what's used by the cart to add features, models and interfaces for the cart. should
