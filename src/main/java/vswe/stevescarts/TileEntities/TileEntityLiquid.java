@@ -17,6 +17,8 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Containers.ContainerBase;
 import vswe.stevescarts.Containers.ContainerLiquid;
@@ -31,8 +33,6 @@ import vswe.stevescarts.Modules.Storages.Tanks.ModuleTank;
 import vswe.stevescarts.Slots.SlotLiquidFilter;
 import vswe.stevescarts.Slots.SlotLiquidManagerInput;
 import vswe.stevescarts.Slots.SlotLiquidOutput;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityLiquid extends TileEntityManager implements IFluidHandler, ITankHolder, ISidedInventory {
 

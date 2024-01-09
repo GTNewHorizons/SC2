@@ -7,11 +7,11 @@ import net.minecraft.item.ItemStack;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerManager;
 import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.TileEntities.TileEntityManager;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public abstract class GuiManager extends GuiBase {

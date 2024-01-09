@@ -7,6 +7,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerDistributor;
 import vswe.stevescarts.Helpers.DistributorSetting;
 import vswe.stevescarts.Helpers.DistributorSide;
@@ -14,8 +16,6 @@ import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.TileEntities.TileEntityDistributor;
 import vswe.stevescarts.TileEntities.TileEntityManager;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiDistributor extends GuiBase {

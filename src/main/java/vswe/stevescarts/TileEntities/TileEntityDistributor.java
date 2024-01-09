@@ -19,6 +19,8 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerBase;
 import vswe.stevescarts.Containers.ContainerDistributor;
 import vswe.stevescarts.Helpers.DistributorSetting;
@@ -28,8 +30,6 @@ import vswe.stevescarts.Helpers.Tank;
 import vswe.stevescarts.Interfaces.GuiBase;
 import vswe.stevescarts.Interfaces.GuiDistributor;
 import vswe.stevescarts.PacketHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityDistributor extends TileEntityBase implements IInventory, ISidedInventory, IFluidHandler {
 

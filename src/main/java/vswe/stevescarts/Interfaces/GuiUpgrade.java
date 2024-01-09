@@ -5,13 +5,13 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerUpgrade;
 import vswe.stevescarts.Helpers.ResourceHelper;
 import vswe.stevescarts.TileEntities.TileEntityUpgrade;
 import vswe.stevescarts.Upgrades.InterfaceEffect;
 import vswe.stevescarts.Upgrades.InventoryEffect;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiUpgrade extends GuiBase {

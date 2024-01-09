@@ -12,10 +12,16 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerBase;
 import vswe.stevescarts.Containers.ContainerCargo;
 import vswe.stevescarts.Containers.ContainerManager;
-import vswe.stevescarts.Helpers.*;
+import vswe.stevescarts.Helpers.CargoItemSelection;
+import vswe.stevescarts.Helpers.ComponentTypes;
+import vswe.stevescarts.Helpers.Localization;
+import vswe.stevescarts.Helpers.ManagerTransfer;
+import vswe.stevescarts.Helpers.TransferHandler;
 import vswe.stevescarts.Helpers.TransferHandler.TRANSFER_TYPE;
 import vswe.stevescarts.Interfaces.GuiBase;
 import vswe.stevescarts.Interfaces.GuiCargo;
@@ -34,8 +40,6 @@ import vswe.stevescarts.Slots.SlotMilker;
 import vswe.stevescarts.Slots.SlotSapling;
 import vswe.stevescarts.Slots.SlotSeed;
 import vswe.stevescarts.Slots.SlotTorch;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityCargo extends TileEntityManager {
 

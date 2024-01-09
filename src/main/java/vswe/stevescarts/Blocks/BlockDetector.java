@@ -14,12 +14,12 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import vswe.stevescarts.Helpers.DetectorType;
-import vswe.stevescarts.StevesCarts;
-import vswe.stevescarts.TileEntities.TileEntityDetector;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Helpers.DetectorType;
+import vswe.stevescarts.StevesCarts;
+import vswe.stevescarts.TileEntities.TileEntityDetector;
 
 public class BlockDetector extends BlockContainerBase {
 

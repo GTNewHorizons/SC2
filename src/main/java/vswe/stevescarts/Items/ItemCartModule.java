@@ -10,12 +10,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.TileEntities.TileEntityCartAssembler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCartModule extends Item {
 

@@ -8,6 +8,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Containers.ContainerActivator;
 import vswe.stevescarts.Containers.ContainerBase;
@@ -20,8 +22,6 @@ import vswe.stevescarts.Modules.Addons.ModuleInvisible;
 import vswe.stevescarts.Modules.Addons.ModuleShield;
 import vswe.stevescarts.Modules.Realtimers.ModuleCage;
 import vswe.stevescarts.Modules.Workers.Tools.ModuleDrill;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * The tile entity used by the Module Toggler

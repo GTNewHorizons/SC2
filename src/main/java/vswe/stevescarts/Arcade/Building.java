@@ -1,6 +1,5 @@
 package vswe.stevescarts.Arcade;
 
-import vswe.stevescarts.Arcade.Unit.UPDATE_RESULT;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 
 public class Building extends Unit {

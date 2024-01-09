@@ -3,14 +3,14 @@ package vswe.stevescarts.Arcade;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.Helpers.SoundHandler;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 import vswe.stevescarts.Modules.Realtimers.ModuleArcade;
 import vswe.stevescarts.StevesCarts;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ArcadeGame {
 

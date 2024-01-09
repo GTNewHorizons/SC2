@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.config.Configuration;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import vswe.stevescarts.Blocks.ModBlocks;
 import vswe.stevescarts.Helpers.ComponentTypes;
 import vswe.stevescarts.Helpers.DetectorType;
@@ -15,7 +16,6 @@ import vswe.stevescarts.Helpers.RecipeHelper;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.Upgrades.AssemblerUpgrade;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ModItems {
 

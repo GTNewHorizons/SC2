@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import net.minecraft.util.IIcon;
 
-import vswe.stevescarts.Interfaces.GuiDetector;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Interfaces.GuiDetector;
 
 @SideOnly(Side.CLIENT)
 public class DropDownMenu {

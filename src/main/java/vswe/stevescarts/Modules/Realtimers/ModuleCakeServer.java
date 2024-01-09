@@ -5,6 +5,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.Helpers.ResourceHelper;
@@ -13,8 +15,6 @@ import vswe.stevescarts.Modules.ISuppliesModule;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.Slots.SlotBase;
 import vswe.stevescarts.Slots.SlotCake;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModuleCakeServer extends ModuleBase implements ISuppliesModule {
 

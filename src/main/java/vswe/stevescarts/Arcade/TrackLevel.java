@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 import net.minecraft.client.Minecraft;
 
-import vswe.stevescarts.Arcade.TrackOrientation.DIRECTION;
-import vswe.stevescarts.Helpers.Localization;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Arcade.TrackOrientation.DIRECTION;
+import vswe.stevescarts.Helpers.Localization;
 
 public class TrackLevel {
 

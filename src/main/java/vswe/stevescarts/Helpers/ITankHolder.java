@@ -3,9 +3,9 @@ package vswe.stevescarts.Helpers;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-import vswe.stevescarts.Interfaces.GuiBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Interfaces.GuiBase;
 
 public interface ITankHolder {
 

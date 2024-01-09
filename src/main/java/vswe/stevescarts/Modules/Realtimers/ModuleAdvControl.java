@@ -10,6 +10,8 @@ import net.minecraft.nbt.NBTTagCompound;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.Localization;
 import vswe.stevescarts.Helpers.ResourceHelper;
@@ -18,8 +20,6 @@ import vswe.stevescarts.Modules.Engines.ModuleEngine;
 import vswe.stevescarts.Modules.ILeverModule;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.PacketHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModuleAdvControl extends ModuleBase implements ILeverModule {
 

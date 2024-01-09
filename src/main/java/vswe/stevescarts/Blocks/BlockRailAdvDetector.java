@@ -10,6 +10,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.DetectorType;
 import vswe.stevescarts.ModuleData.ModuleData;
@@ -21,8 +23,6 @@ import vswe.stevescarts.TileEntities.TileEntityUpgrade;
 import vswe.stevescarts.Upgrades.BaseEffect;
 import vswe.stevescarts.Upgrades.Disassemble;
 import vswe.stevescarts.Upgrades.Transposer;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockRailAdvDetector extends BlockSpecialRailBase {
 

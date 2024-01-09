@@ -14,14 +14,14 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Blocks.ModBlocks;
 import vswe.stevescarts.Helpers.ComponentTypes;
 import vswe.stevescarts.Helpers.RecipeHelper;
 import vswe.stevescarts.Items.ModItems;
 import vswe.stevescarts.StevesCarts;
 import vswe.stevescarts.TileEntities.TileEntityUpgrade;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class AssemblerUpgrade {
 

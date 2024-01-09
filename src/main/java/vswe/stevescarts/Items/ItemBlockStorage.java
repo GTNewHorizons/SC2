@@ -10,11 +10,11 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Helpers.ComponentTypes;
 import vswe.stevescarts.Helpers.StorageBlock;
 import vswe.stevescarts.StevesCarts;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockStorage extends ItemBlock {
 

@@ -4,16 +4,20 @@ import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Fancy.FancyPancyLoader;
-import vswe.stevescarts.Helpers.*;
+import vswe.stevescarts.Helpers.ComponentTypes;
+import vswe.stevescarts.Helpers.EntityCake;
+import vswe.stevescarts.Helpers.EntityEasterEgg;
+import vswe.stevescarts.Helpers.MinecartSoundMuter;
+import vswe.stevescarts.Helpers.SoundHandler;
 import vswe.stevescarts.Items.ModItems;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.Renders.RendererMinecart;
 import vswe.stevescarts.Renders.RendererMinecartItem;
 import vswe.stevescarts.Renders.RendererUpgrade;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 

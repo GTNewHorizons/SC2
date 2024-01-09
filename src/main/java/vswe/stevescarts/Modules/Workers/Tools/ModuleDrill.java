@@ -15,6 +15,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Vec3;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Blocks.ModBlocks;
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.BlockCoord;
@@ -28,8 +30,6 @@ import vswe.stevescarts.Modules.Addons.ModuleOreTracker;
 import vswe.stevescarts.Modules.IActivatorModule;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.Modules.Storages.Chests.ModuleChest;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ModuleDrill extends ModuleTool implements IActivatorModule {
 

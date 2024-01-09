@@ -8,8 +8,8 @@ import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
-import vswe.stevescarts.Items.ModItems;
 import cpw.mods.fml.common.registry.GameRegistry;
+import vswe.stevescarts.Items.ModItems;
 
 public final class RecipeHelper {
 

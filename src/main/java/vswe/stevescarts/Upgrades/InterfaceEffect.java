@@ -2,11 +2,11 @@ package vswe.stevescarts.Upgrades;
 
 import net.minecraft.inventory.ICrafting;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Containers.ContainerUpgrade;
 import vswe.stevescarts.Interfaces.GuiUpgrade;
 import vswe.stevescarts.TileEntities.TileEntityUpgrade;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class InterfaceEffect extends BaseEffect {
 

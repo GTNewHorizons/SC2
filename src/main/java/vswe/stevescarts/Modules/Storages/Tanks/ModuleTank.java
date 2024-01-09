@@ -9,16 +9,20 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
-import vswe.stevescarts.Helpers.*;
+import vswe.stevescarts.Helpers.ColorHelper;
+import vswe.stevescarts.Helpers.ITankHolder;
+import vswe.stevescarts.Helpers.Localization;
+import vswe.stevescarts.Helpers.ResourceHelper;
+import vswe.stevescarts.Helpers.Tank;
 import vswe.stevescarts.Interfaces.GuiBase;
 import vswe.stevescarts.Interfaces.GuiMinecart;
 import vswe.stevescarts.Modules.Storages.ModuleStorage;
 import vswe.stevescarts.Slots.SlotBase;
 import vswe.stevescarts.Slots.SlotLiquidInput;
 import vswe.stevescarts.Slots.SlotLiquidOutput;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ModuleTank extends ModuleStorage implements IFluidTank, ITankHolder {
 

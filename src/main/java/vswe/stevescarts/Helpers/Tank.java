@@ -13,9 +13,9 @@ import net.minecraftforge.fluids.IFluidTank;
 
 import org.lwjgl.opengl.GL11;
 
-import vswe.stevescarts.Interfaces.GuiBase;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import vswe.stevescarts.Interfaces.GuiBase;
 
 public class Tank implements IFluidTank {
 
