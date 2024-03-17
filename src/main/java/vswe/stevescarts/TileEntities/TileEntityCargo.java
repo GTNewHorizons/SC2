@@ -61,7 +61,7 @@ public class TileEntityCargo extends TileEntityManager {
     public static ArrayList<CargoItemSelection> itemSelections;
 
     public static void loadSelectionSettings() {
-        itemSelections = new ArrayList<CargoItemSelection>();
+        itemSelections = new ArrayList<>();
         itemSelections.add(
                 new CargoItemSelection(
                         Localization.GUI.CARGO.AREA_ALL,
@@ -145,7 +145,7 @@ public class TileEntityCargo extends TileEntityManager {
         return "container.cargomanager";
     }
 
-    public int target[] = new int[] { 0, 0, 0, 0 };
+    public int[] target = new int[] { 0, 0, 0, 0 };
     public ArrayList<SlotCargo> cargoSlots;
     public int lastLayout = -1;
 
@@ -292,19 +292,19 @@ public class TileEntityCargo extends TileEntityManager {
 
     @Override
     protected boolean doTransfer(ManagerTransfer transfer) {
-        java.lang.Class slotCart = itemSelections.get(target[transfer.getSetting()]).getValidSlot();
+        Class<?> slotCart = itemSelections.get(target[transfer.getSetting()]).getValidSlot();
         if (slotCart == null) {
             transfer.setLowestSetting(transfer.getSetting() + 1);
             return true;
         }
-        java.lang.Class slotCargo = SlotCargo.class;
+        Class<?> slotCargo = SlotCargo.class;
 
         IInventory fromInv;
         Container fromCont;
-        java.lang.Class fromValid;
+        Class<?> fromValid;
         IInventory toInv;
         Container toCont;
-        java.lang.Class toValid;
+        Class<?> toValid;
 
         if (toCart[transfer.getSetting()]) {
             fromInv = this;
