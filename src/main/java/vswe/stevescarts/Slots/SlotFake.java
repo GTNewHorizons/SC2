@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 
 import vswe.stevescarts.Helpers.TransferHandler.TRANSFER_TYPE;
 
-public abstract class SlotFake extends SlotBase implements ISpecialItemTransferValidator {
+public abstract class SlotFake extends SlotBase implements ISpecialItemTransferValidator, ISpecialSlotValidator {
 
     public SlotFake(IInventory iinventory, int i, int j, int k) {
         super(iinventory, i, j, k);
@@ -27,6 +27,11 @@ public abstract class SlotFake extends SlotBase implements ISpecialItemTransferV
 
     @Override
     public boolean isItemValidForTransfer(ItemStack item, TRANSFER_TYPE type) {
+        return false;
+    }
+
+    @Override
+    public boolean isSlotValid() {
         return false;
     }
 

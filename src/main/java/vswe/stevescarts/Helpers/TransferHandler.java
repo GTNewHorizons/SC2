@@ -16,7 +16,7 @@ public class TransferHandler {
         OTHER
     }
 
-    public static boolean isSlotOfType(Slot slot, java.lang.Class slotType) {
+    public static boolean isSlotOfType(Slot slot, Class<?> slotType) {
         if (slot instanceof ISpecialSlotValidator) {
             ISpecialSlotValidator specSlot = (ISpecialSlotValidator) slot;
             return specSlot.isSlotValid();
@@ -43,18 +43,18 @@ public class TransferHandler {
         TransferItem(iStack, inv, 0, inv.getSizeInventory() - 1, cont, validSlot, null, maxItems, type, false);
     }
 
-    public static void TransferItem(ItemStack iStack, IInventory inv, Container cont, java.lang.Class validSlot,
-            java.lang.Class invalidSlot, int maxItems) {
+    public static void TransferItem(ItemStack iStack, IInventory inv, Container cont, Class<?> validSlot,
+            Class<?> invalidSlot, int maxItems) {
         TransferItem(iStack, inv, 0, inv.getSizeInventory() - 1, cont, validSlot, invalidSlot, maxItems);
     }
 
     public static void TransferItem(ItemStack iStack, IInventory inv, int start, int end, Container cont,
-            java.lang.Class validSlot, java.lang.Class invalidSlot, int maxItems) {
+            Class<?> validSlot, Class<?> invalidSlot, int maxItems) {
         TransferItem(iStack, inv, start, end, cont, validSlot, invalidSlot, maxItems, TRANSFER_TYPE.OTHER, false);
     }
 
     public static void TransferItem(ItemStack iStack, IInventory inv, int start, int end, Container cont,
-            java.lang.Class validSlot, java.lang.Class invalidSlot, int maxItems, TRANSFER_TYPE type, boolean fake) {
+            Class<?> validSlot, Class<?> invalidSlot, int maxItems, TRANSFER_TYPE type, boolean fake) {
         start = Math.max(0, start);
         end = Math.min(inv.getSizeInventory() - 1, end);
 

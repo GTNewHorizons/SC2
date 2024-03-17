@@ -1,5 +1,6 @@
 // Add your dependencies here
 
 dependencies {
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.5.24-GTNH:dev")
 
 }
