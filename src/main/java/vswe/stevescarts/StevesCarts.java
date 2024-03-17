@@ -37,7 +37,7 @@ import vswe.stevescarts.Listeners.TicketListener;
 import vswe.stevescarts.TileEntities.TileEntityCargo;
 import vswe.stevescarts.Upgrades.AssemblerUpgrade;
 
-@Mod(modid = "StevesCarts", name = "Steve's Carts 2", version = "GRADLETOKEN_VERSION")
+@Mod(modid = "StevesCarts", name = "Steve's Carts 2", version = Tags.VERSION)
 public class StevesCarts {
 
     public static boolean hasGreenScreen = false;
