@@ -1,7 +1,7 @@
 package vswe.stevescarts.Modules.Addons.Plants;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockCrops;
+import net.minecraft.block.IGrowable;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IPlantable;
@@ -51,13 +51,21 @@ public class ModuleModCrops extends ModuleAddon implements ICropModule {
         int m = getCart().worldObj.getBlockMetadata(x, y, z);
         UniqueIdentifier uniqueIdentifier = GameRegistry.findUniqueIdentifierFor(block);
 
-        // witchery compatibility
-        if (uniqueIdentifier.modId.equals("witchery") && m == 4) {
-            return true;
+        if (!(block instanceof IGrowable)) {
+            return false;
         }
 
-        // default behaviour
-        if (block instanceof BlockCrops && m == 7) {
+        // witchery compatibility
+        if (uniqueIdentifier.modId.equals("witchery")) {
+            if (uniqueIdentifier.name.equals("garlicplant") && m == 5) {
+                return true;
+            } else if (m == 4) {
+                return true;
+            }
+        }
+
+        // default for crops
+        if (m == 7) {
             return true;
         }
 
