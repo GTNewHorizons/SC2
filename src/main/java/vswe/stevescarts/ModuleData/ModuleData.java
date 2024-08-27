@@ -101,6 +101,7 @@ import vswe.stevescarts.Modules.Addons.ModuleShield;
 import vswe.stevescarts.Modules.Addons.ModuleSmelter;
 import vswe.stevescarts.Modules.Addons.ModuleSmelterAdv;
 import vswe.stevescarts.Modules.Addons.ModuleSnowCannon;
+import vswe.stevescarts.Modules.Addons.Plants.ModuleModCrops;
 import vswe.stevescarts.Modules.Addons.Plants.ModuleModTrees;
 import vswe.stevescarts.Modules.Addons.Plants.ModuleNetherwart;
 import vswe.stevescarts.Modules.Addons.Plants.ModulePlantSize;
@@ -941,6 +942,12 @@ public class ModuleData {
                 new Object[][] { { Items.glowstone_dust, null, Items.glowstone_dust },
                         { Items.redstone, Blocks.sapling, Items.redstone }, { ComponentTypes.SIMPLE_PCB.getItemStack(),
                                 ComponentTypes.EMPTY_DISK.getItemStack(), ComponentTypes.SIMPLE_PCB.getItemStack() } });
+
+        new ModuleData(102, "Crop: Exotic", ModuleModCrops.class, 30).addRequirement(farmerGroup).addRecipe(
+                new Object[][] { { Items.glowstone_dust, null, Items.glowstone_dust },
+                        { Items.redstone, Items.wheat_seeds, Items.redstone },
+                        { ComponentTypes.SIMPLE_PCB.getItemStack(), ComponentTypes.EMPTY_DISK.getItemStack(),
+                                ComponentTypes.SIMPLE_PCB.getItemStack() } });
 
         new ModuleData(89, "Planter Range Extender", ModulePlantSize.class, 20).addRequirement(woodcutterGroup)
                 .addRecipe(
