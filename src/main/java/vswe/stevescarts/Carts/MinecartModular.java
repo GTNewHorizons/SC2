@@ -62,6 +62,7 @@ import vswe.stevescarts.Modules.Engines.ModuleEngine;
 import vswe.stevescarts.Modules.IActivatorModule;
 import vswe.stevescarts.Modules.ModuleBase;
 import vswe.stevescarts.Modules.Storages.Chests.ModuleChest;
+import vswe.stevescarts.Modules.Storages.Chests.ModuleTrainStorage;
 import vswe.stevescarts.Modules.Storages.Tanks.ModuleTank;
 import vswe.stevescarts.Modules.Workers.ModuleWorker;
 import vswe.stevescarts.Modules.Workers.Tools.ModuleTool;
@@ -1754,6 +1755,7 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
      */
     public void addItemToChest(ItemStack iStack) {
         TransferHandler.TransferItem(iStack, this, getCon(null), Slot.class, null, -1);
+        pushToTrain(iStack);
     }
 
     /**
@@ -1765,6 +1767,7 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
      */
     public void addItemToChest(ItemStack iStack, int start, int end) {
         TransferHandler.TransferItem(iStack, this, start, end, getCon(null), Slot.class, null, -1);
+        pushToTrain(iStack);
     }
 
     /**
@@ -1776,6 +1779,17 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
      */
     public void addItemToChest(ItemStack iStack, java.lang.Class validSlot, java.lang.Class invalidSlot) {
         TransferHandler.TransferItem(iStack, this, getCon(null), validSlot, invalidSlot, -1);
+        pushToTrain(iStack);
+    }
+
+    private void pushToTrain(ItemStack iStack) {
+        if (iStack.stackSize != 0) {
+            for (ModuleBase module : getModules()) {
+                if (module instanceof ModuleTrainStorage) {
+                    ((ModuleTrainStorage) module).pushItemStack(iStack);
+                }
+            }
+        }
     }
 
     /**
