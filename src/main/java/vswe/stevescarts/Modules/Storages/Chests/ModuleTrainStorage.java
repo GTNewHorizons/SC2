@@ -12,11 +12,6 @@ public class ModuleTrainStorage extends ModuleStorage {
         super(cart);
     }
 
-    @Override
-    public void update() {
-        super.update();
-    }
-
     public void pushItemStack(ItemStack iStack) {
         ItemStack ret = CartTools.transferHelper.pushStack(this.getCart(), iStack);
         if (ret == null) {

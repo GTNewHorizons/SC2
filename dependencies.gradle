@@ -4,7 +4,7 @@ dependencies {
     compileOnly("com.github.GTNewHorizons:Railcraft:9.16.7")
 
     // Fixes Carts not spawning (Entity ID get set to a bad value without)
-    runtimeOnlyNonPublishable(rfg.deobf("CoreTweaks:CoreTweaks:0.3.3.2"))
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:CoreTweaks:0.3.3.4-GTNH:dev")
 
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.11-GTNH:dev")
 
