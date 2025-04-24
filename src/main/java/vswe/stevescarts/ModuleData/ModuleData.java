@@ -15,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
@@ -150,6 +151,7 @@ import vswe.stevescarts.Modules.Storages.Chests.ModuleGiftStorage;
 import vswe.stevescarts.Modules.Storages.Chests.ModuleInternalStorage;
 import vswe.stevescarts.Modules.Storages.Chests.ModuleSideChests;
 import vswe.stevescarts.Modules.Storages.Chests.ModuleTopChest;
+import vswe.stevescarts.Modules.Storages.Chests.ModuleTrainStorage;
 import vswe.stevescarts.Modules.Storages.ModuleStorage;
 import vswe.stevescarts.Modules.Storages.Tanks.ModuleAdvancedTank;
 import vswe.stevescarts.Modules.Storages.Tanks.ModuleCheatTank;
@@ -289,6 +291,18 @@ public class ModuleData {
                                 ComponentTypes.CHEST_PANE.getItemStack() },
                         { ComponentTypes.CHEST_PANE.getItemStack(), ComponentTypes.CHEST_PANE.getItemStack(),
                                 ComponentTypes.CHEST_PANE.getItemStack() } });
+
+        if (Loader.isModLoaded("Railcraft")) {
+            ModuleData tc = new ModuleData(116, "Train Connector", ModuleTrainStorage.class, 30).addRecipe(
+                    new Object[][] {
+                            { ComponentTypes.LARGE_DYNAMIC_PANE.getItemStack(), Blocks.hopper,
+                                    ComponentTypes.LARGE_DYNAMIC_PANE.getItemStack() },
+                            { ComponentTypes.HUGE_DYNAMIC_PANE.getItemStack(), ComponentTypes.CHEST_LOCK.getItemStack(),
+                                    ComponentTypes.HUGE_DYNAMIC_PANE.getItemStack() },
+                            { ComponentTypes.LARGE_DYNAMIC_PANE.getItemStack(), Blocks.hopper,
+                                    ComponentTypes.LARGE_DYNAMIC_PANE.getItemStack() } });
+        }
+
         new ModuleData(6, "Extracting Chests", ModuleExtractingChests.class, 75)
                 .addSides(new SIDE[] { SIDE.CENTER, SIDE.RIGHT, SIDE.LEFT }).addRecipe(
                         new Object[][] {
