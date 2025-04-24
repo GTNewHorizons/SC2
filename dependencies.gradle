@@ -1,13 +1,13 @@
 // Add your dependencies here
 
 dependencies {
-    compileOnly("com.github.GTNewHorizons:Railcraft:9.16.7")
+    compileOnly("com.github.GTNewHorizons:Railcraft:9.16.21")
 
     // Fixes Carts not spawning (Entity ID get set to a bad value without)
     runtimeOnlyNonPublishable("com.github.GTNewHorizons:CoreTweaks:0.3.3.4-GTNH:dev")
 
-    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.11-GTNH:dev")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.38-GTNH:dev")
 
     // For testing RC integration
-    //runtimeOnlyNonPublishable("com.github.GTNewHorizons:Railcraft:9.16.7")
+    //runtimeOnlyNonPublishable("com.github.GTNewHorizons:Railcraft:9.16.21")
 }
