@@ -208,6 +208,12 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
                     }
 
                     for (ItemStack iStack : stuff) {
+
+                        // Extra drop rates same as Crop managers of same tier
+                        if (getCart().rand.nextFloat() <= 0.05 * (getCart().getCurrentEngine().getEngineTier() + 1)) {
+                            iStack.stackSize *= 2;
+                        }
+
                         getCart().addItemToChest(iStack);
 
                         if (iStack.stackSize != 0) {

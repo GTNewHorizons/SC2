@@ -13,6 +13,11 @@ public abstract class ModuleThermalBase extends ModuleEngine {
         super(cart);
     }
 
+    @Override
+    public int getEngineTier() {
+        return EngineTier.MV;
+    }
+
     private short coolantLevel;
 
     private int getCoolantLevel() {

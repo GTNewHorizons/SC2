@@ -114,6 +114,9 @@ import vswe.stevescarts.Modules.Addons.Projectiles.ModuleSnowball;
 import vswe.stevescarts.Modules.Engines.ModuleCheatEngine;
 import vswe.stevescarts.Modules.Engines.ModuleCoalStandard;
 import vswe.stevescarts.Modules.Engines.ModuleCoalTiny;
+import vswe.stevescarts.Modules.Engines.ModuleElectricHV;
+import vswe.stevescarts.Modules.Engines.ModuleElectricLV;
+import vswe.stevescarts.Modules.Engines.ModuleElectricMV;
 import vswe.stevescarts.Modules.Engines.ModuleEngine;
 import vswe.stevescarts.Modules.Engines.ModuleSolarBasic;
 import vswe.stevescarts.Modules.Engines.ModuleSolarCompact;
@@ -758,6 +761,21 @@ public class ModuleData {
                                 ComponentTypes.SIMPLE_PCB.getItemStack() } });
 
         ModuleData cheatengine = new ModuleData(61, "Creative Engine", ModuleCheatEngine.class, 1);
+
+        if (Loader.isModLoaded("Railcraft")) {
+            ModuleData electricengineLV = new ModuleData(117, "Electric Engine LV", ModuleElectricLV.class, 25);
+            ModuleData electricengineMV = new ModuleData(118, "Electric Engine MV", ModuleElectricMV.class, 50);
+            ModuleData electricengineHV = new ModuleData(119, "Electric Engine HV", ModuleElectricHV.class, 75);
+            engineGroup.add(electricengineLV);
+            engineGroup.add(electricengineMV);
+            engineGroup.add(electricengineHV);
+            electricengineLV.addNemesis(electricengineMV);
+            electricengineLV.addNemesis(electricengineHV);
+            electricengineMV.addNemesis(electricengineLV);
+            electricengineMV.addNemesis(electricengineHV);
+            electricengineHV.addNemesis(electricengineLV);
+            electricengineHV.addNemesis(electricengineMV);
+        }
 
         ModuleData internalTank = new ModuleData(63, "Internal Tank", ModuleInternalTank.class, 37).setAllowDuplicate()
                 .addRecipe(

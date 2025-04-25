@@ -58,6 +58,7 @@ import vswe.stevescarts.Items.ModItems;
 import vswe.stevescarts.Models.Cart.ModelCartbase;
 import vswe.stevescarts.ModuleData.ModuleData;
 import vswe.stevescarts.Modules.Addons.ModuleCreativeSupplies;
+import vswe.stevescarts.Modules.Engines.ModuleElectricBase;
 import vswe.stevescarts.Modules.Engines.ModuleEngine;
 import vswe.stevescarts.Modules.IActivatorModule;
 import vswe.stevescarts.Modules.ModuleBase;
@@ -673,7 +674,7 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
      * 
      * @return The engine, or null if no valid one were found
      */
-    private ModuleEngine getCurrentEngine() {
+    public ModuleEngine getCurrentEngine() {
         if (modules == null) {
             return null;
         }
@@ -853,6 +854,7 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
     public float getMaxCartSpeedOnRail() {
         // the calculated maximum speed
         float maxSpeed = super.getMaxCartSpeedOnRail();
+        float engineMulitplier = 1;
         if (modules != null) {
             for (ModuleBase module : modules) {
                 float tempMax = module.getMaxSpeed();
@@ -861,7 +863,10 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
                 }
             }
         }
-        return maxSpeed;
+        if (getCurrentEngine() != null) {
+            engineMulitplier += (float) (0.1 * getCurrentEngine().getEngineTier());
+        }
+        return Math.min(super.getMaxCartSpeedOnRail(), maxSpeed * engineMulitplier);
     }
 
     /**
@@ -1221,6 +1226,11 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
             } else {
                 this.pushX = this.motionX;
                 this.pushZ = this.motionZ;
+            }
+        }
+        for (ModuleBase module : modules) {
+            if (module instanceof ModuleElectricBase) {
+                ((ModuleElectricBase) module).getChargeHandler().tickOnTrack(par1, par2, par3);
             }
         }
     }
@@ -1646,7 +1656,9 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
                 }
             } else {
                 // otherwise decrease the cool down
-                workingTime--;
+                if (getCurrentEngine() != null) {
+                    workingTime -= (int) Math.pow(2, getCurrentEngine().getEngineTier());
+                }
             }
         }
     }

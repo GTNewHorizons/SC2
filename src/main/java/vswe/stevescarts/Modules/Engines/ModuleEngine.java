@@ -30,6 +30,10 @@ public abstract class ModuleEngine extends ModuleBase {
         loadFuel();
     }
 
+    public int getEngineTier() {
+        return EngineTier.LV;
+    }
+
     // returns if this cart supplies the cart with fuel
     public boolean hasFuel(int comsumption) {
         return getFuelLevel() >= comsumption && !isDisabled();
