@@ -465,6 +465,9 @@ public final class Localization {
             POWERED("thermalPowered"),
             NO_WATER("outOfWater"),
             NO_LAVA("outOfLava"),
+            ELECTRIC("electricEngineTitle"),
+            CHARGE("chargeLevel"),
+            NO_CHARGE("outOfCharge"),
             ENGINE_DISABLED("engineDisabledMessage"),
             ENGINE_PRIORITY("enginePriorityMessage");
 

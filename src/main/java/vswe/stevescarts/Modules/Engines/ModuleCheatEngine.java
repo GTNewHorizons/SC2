@@ -12,6 +12,11 @@ public class ModuleCheatEngine extends ModuleEngine {
     }
 
     @Override
+    public int getEngineTier() {
+        return EngineTier.HV;
+    }
+
+    @Override
     public void loadFuel() {
         // no reason to load fuel
     }
