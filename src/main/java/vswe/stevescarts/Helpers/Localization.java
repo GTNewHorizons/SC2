@@ -439,7 +439,9 @@ public final class Localization {
             RECIPE_CHANGE_AMOUNT("recipeChangeLimit"),
             RECIPE_CHANGE_AMOUNT_10("recipeChangeLimit10"),
             RECIPE_CHANGE_AMOUNT_64("recipeChangeLimit64"),
-            SHIELD("shieldToggle");
+            SHIELD("shieldToggle"),
+            TOGGLE_HARVESTMODE("toggleHarvestmode"),
+            HARVESTMODE("harvestmode");
 
             private String name;
 

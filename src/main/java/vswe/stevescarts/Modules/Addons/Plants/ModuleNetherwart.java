@@ -1,9 +1,13 @@
 package vswe.stevescarts.Modules.Addons.Plants;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Modules.Addons.ModuleAddon;
@@ -33,4 +37,28 @@ public class ModuleNetherwart extends ModuleAddon implements ICropModule {
         return b == Blocks.nether_wart && m == 3;
     }
 
+    @Override
+    public List<ItemStack> harvestCrop(int x, int y, int z, int fortune) {
+        Block block = getCart().worldObj.getBlock(x, y, z);
+        int m = getCart().worldObj.getBlockMetadata(x, y, z);
+
+        getCart().worldObj.setBlockMetadataWithNotify(x, y, z, 0, 3);
+
+        return block.getDrops(getCart().worldObj, x, y, z, m, fortune);
+    }
+
+    @Override
+    public void placeCrop(int x, int y, int z, ItemStack seed) {
+        Block cropblock = getCropFromSeed(seed);
+        getCart().worldObj.setBlock(x, y, z, cropblock);
+    }
+
+    @Override
+    public boolean isSeedPlaceable(int x, int y, int z, ItemStack seed) {
+        Block soilblock = getCart().worldObj.getBlock(x, y - 1, z);
+        Block cropblock = getCropFromSeed(seed);
+        return cropblock != null && cropblock instanceof IPlantable
+                && getCart().worldObj.isAirBlock(x, y, z)
+                && soilblock.canSustainPlant(getCart().worldObj, x, y, z, ForgeDirection.UP, ((IPlantable) cropblock));
+    }
 }
