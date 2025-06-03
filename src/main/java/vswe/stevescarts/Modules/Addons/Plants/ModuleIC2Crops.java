@@ -58,6 +58,9 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
         if (((ICropTile) te).getCrop() == null) {
             return false;
         }
+        if (((ICropTile) te).getCrop() == Crops.weed) {
+            return true;
+        }
         if (!harvestOptimal) {
             return ((ICropTile) te).getCrop().canBeHarvested((ICropTile) te);
         }
@@ -69,6 +72,11 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
         TileEntity te = getCart().worldObj.getTileEntity(x, y, z);
         if (!(te instanceof ICropTile)) {
             return null;
+        }
+        if (((ICropTile) te).getCrop() == Crops.weed) {
+            byte size = ((ICropTile) te).getSize();
+            ((ICropTile) te).reset();
+            return Arrays.asList(GameRegistry.makeItemStack("IC2:itemWeed", 0, size, ""));
         }
         ItemStack[] items = ((ICropTile) te).harvest_automated(harvestOptimal);
         return items != null ? Arrays.asList(items) : new ArrayList<ItemStack>();
