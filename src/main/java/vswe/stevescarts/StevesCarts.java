@@ -7,6 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -47,6 +48,7 @@ public class StevesCarts {
     public static boolean freezeCartSimulation = false;
     public static boolean renderSteve = false;
     public static boolean arcadeDevOperator = false;
+    public static final boolean isIC2Loaded = Loader.isModLoaded("IC2");
 
     public static final String CHANNEL = "SC2";
 

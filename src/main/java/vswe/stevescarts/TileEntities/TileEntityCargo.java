@@ -33,6 +33,7 @@ import vswe.stevescarts.Slots.SlotBuilder;
 import vswe.stevescarts.Slots.SlotCake;
 import vswe.stevescarts.Slots.SlotCargo;
 import vswe.stevescarts.Slots.SlotChest;
+import vswe.stevescarts.Slots.SlotCropStick;
 import vswe.stevescarts.Slots.SlotFertilizer;
 import vswe.stevescarts.Slots.SlotFirework;
 import vswe.stevescarts.Slots.SlotFuel;
@@ -40,6 +41,7 @@ import vswe.stevescarts.Slots.SlotMilker;
 import vswe.stevescarts.Slots.SlotSapling;
 import vswe.stevescarts.Slots.SlotSeed;
 import vswe.stevescarts.Slots.SlotTorch;
+import vswe.stevescarts.StevesCarts;
 
 public class TileEntityCargo extends TileEntityManager {
 
@@ -133,6 +135,13 @@ public class TileEntityCargo extends TileEntityManager {
                         Localization.GUI.CARGO.AREA_CAKES,
                         SlotCake.class,
                         new ItemStack(Items.cake, 1)));
+        if (StevesCarts.isIC2Loaded) {
+            itemSelections.add(
+                    new CargoItemSelection(
+                            Localization.GUI.CARGO.AREA_CROPSTICKS,
+                            SlotCropStick.class,
+                            new ItemStack(ModItems.modules, 1, 103)));
+        }
     }
 
     @Override

@@ -99,7 +99,8 @@ public final class Localization {
             AREA_SAPLINGS("cartAreaSaplings"),
             AREA_FIREWORK("cartAreaFirework"),
             AREA_BUCKETS("cartAreaBuckets"),
-            AREA_CAKES("cartAreaCakes");
+            AREA_CAKES("cartAreaCakes"),
+            AREA_CROPSTICKS("cartAreaCropsticks");
 
             private String name;
 

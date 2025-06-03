@@ -982,7 +982,7 @@ public class ModuleData {
                         { ComponentTypes.SIMPLE_PCB.getItemStack(), ComponentTypes.EMPTY_DISK.getItemStack(),
                                 ComponentTypes.SIMPLE_PCB.getItemStack() } });
 
-        if (Loader.isModLoaded("IC2")) {
+        if (StevesCarts.isIC2Loaded) {
             new ModuleData(103, "Crop: IC2", ModuleIC2Crops.class, 55).addRequirement(farmerGroup).addRecipe(
                     new Object[][] { { Items.iron_hoe, null, Items.iron_hoe },
                             { Items.redstone, Items.wheat_seeds, Items.redstone },
