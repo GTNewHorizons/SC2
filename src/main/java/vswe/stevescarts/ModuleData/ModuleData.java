@@ -15,7 +15,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import vswe.stevescarts.Carts.MinecartModular;
@@ -296,7 +295,7 @@ public class ModuleData {
                         { ComponentTypes.CHEST_PANE.getItemStack(), ComponentTypes.CHEST_PANE.getItemStack(),
                                 ComponentTypes.CHEST_PANE.getItemStack() } });
 
-        if (Loader.isModLoaded("Railcraft")) {
+        if (StevesCarts.isRailcraftLoaded) {
             ModuleData tc = new ModuleData(116, "Train Connector", ModuleTrainStorage.class, 30).addRecipe(
                     new Object[][] {
                             { ComponentTypes.LARGE_DYNAMIC_PANE.getItemStack(), Blocks.hopper,
@@ -763,7 +762,7 @@ public class ModuleData {
 
         ModuleData cheatengine = new ModuleData(61, "Creative Engine", ModuleCheatEngine.class, 1);
 
-        if (Loader.isModLoaded("Railcraft")) {
+        if (StevesCarts.isRailcraftLoaded) {
             ModuleData electricengineLV = new ModuleData(117, "Electric Engine LV", ModuleElectricLV.class, 25);
             ModuleData electricengineMV = new ModuleData(118, "Electric Engine MV", ModuleElectricMV.class, 50);
             ModuleData electricengineHV = new ModuleData(119, "Electric Engine HV", ModuleElectricHV.class, 75);
