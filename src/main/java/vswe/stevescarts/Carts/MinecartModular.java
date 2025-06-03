@@ -1,5 +1,7 @@
 package vswe.stevescarts.Carts;
 
+import static vswe.stevescarts.StevesCarts.isRailcraftLoaded;
+
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -1228,9 +1230,11 @@ public class MinecartModular extends EntityMinecart implements IInventory, IEnti
                 this.pushZ = this.motionZ;
             }
         }
-        for (ModuleBase module : modules) {
-            if (module instanceof ModuleElectricBase) {
-                ((ModuleElectricBase) module).getChargeHandler().tickOnTrack(par1, par2, par3);
+        if (isRailcraftLoaded) {
+            for (ModuleBase module : modules) {
+                if (module instanceof ModuleElectricBase) {
+                    ((ModuleElectricBase) module).getChargeHandler().tickOnTrack(par1, par2, par3);
+                }
             }
         }
     }
