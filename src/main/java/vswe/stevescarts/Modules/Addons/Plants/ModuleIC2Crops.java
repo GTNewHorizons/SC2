@@ -218,7 +218,8 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
         }
 
         if (hasCropSticks != -1) {
-            if (Block.getBlockFromItem(Ic2Items.crop.getItem()).canPlaceBlockAt(getCart().worldObj, x, y, z)) {
+            if (Block.getBlockFromItem(Ic2Items.crop.getItem()).canPlaceBlockAt(getCart().worldObj, x, y, z)
+                    && getCart().worldObj.isAirBlock(x, y, z)) {
                 getCart().worldObj.setBlock(x, y, z, Block.getBlockFromItem(getStack(hasCropSticks).getItem()));
                 getStack(hasCropSticks).stackSize--;
                 if (getStack(hasCropSticks).stackSize <= 0) {
