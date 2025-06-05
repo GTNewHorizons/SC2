@@ -2,20 +2,21 @@ package vswe.stevescarts.Modules.Addons.Plants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.GameRegistry.UniqueIdentifier;
 import ic2.api.crops.CropCard;
 import ic2.api.crops.Crops;
 import ic2.api.crops.ICropTile;
+import ic2.core.Ic2Items;
 import ic2.core.crop.TileEntityCrop;
 import ic2.core.item.ItemCropSeed;
 import vswe.stevescarts.Carts.MinecartModular;
@@ -37,10 +38,7 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
 
     @Override
     public boolean isSeedValid(ItemStack seed) {
-
-        UniqueIdentifier uniqueIdentifier = GameRegistry.findUniqueIdentifierFor(seed.getItem());
-
-        return uniqueIdentifier.modId.equals("IC2") && uniqueIdentifier.name.equals("itemCropSeed");
+        return seed.getItem() instanceof ItemCropSeed;
     }
 
     @Override
@@ -52,34 +50,34 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
     @Override
     public boolean isReadyToHarvest(int x, int y, int z) {
         TileEntity te = getCart().worldObj.getTileEntity(x, y, z);
-        if (!(te instanceof ICropTile)) {
-            return false;
+        if (te instanceof ICropTile ct) {
+            if (ct.getCrop() == null) {
+                return false;
+            }
+            if (ct.getCrop() == Crops.weed) {
+                return true;
+            }
+            if (!harvestOptimal) {
+                return (ct.getCrop().canBeHarvested(ct));
+            }
+            return (ct.getSize() >= (ct.getCrop().getOptimalHavestSize(ct)));
         }
-        if (((ICropTile) te).getCrop() == null) {
-            return false;
-        }
-        if (((ICropTile) te).getCrop() == Crops.weed) {
-            return true;
-        }
-        if (!harvestOptimal) {
-            return ((ICropTile) te).getCrop().canBeHarvested((ICropTile) te);
-        }
-        return ((ICropTile) te).getSize() >= ((ICropTile) te).getCrop().getOptimalHavestSize((ICropTile) te);
+        return false;
     }
 
     @Override
     public List<ItemStack> harvestCrop(int x, int y, int z, int fortune) {
         TileEntity te = getCart().worldObj.getTileEntity(x, y, z);
-        if (!(te instanceof ICropTile)) {
-            return null;
+        if (te instanceof ICropTile ct) {
+            if (ct.getCrop() == Crops.weed) {
+                byte size = ct.getSize();
+                ct.reset();
+                return Collections.singletonList(GameRegistry.makeItemStack("IC2:itemWeed", 0, size, ""));
+            }
+            ItemStack[] items = ct.harvest_automated(harvestOptimal);
+            return items != null ? Arrays.asList(items) : new ArrayList<ItemStack>();
         }
-        if (((ICropTile) te).getCrop() == Crops.weed) {
-            byte size = ((ICropTile) te).getSize();
-            ((ICropTile) te).reset();
-            return Arrays.asList(GameRegistry.makeItemStack("IC2:itemWeed", 0, size, ""));
-        }
-        ItemStack[] items = ((ICropTile) te).harvest_automated(harvestOptimal);
-        return items != null ? Arrays.asList(items) : new ArrayList<ItemStack>();
+        return null;
     }
 
     @Override
@@ -172,30 +170,20 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
     }
 
     @Override
-    protected int getInventoryHeight() {
-        return 1;
-    }
-
-    @Override
-    protected int getInventoryWidth() {
-        return 3;
-    }
-
-    @Override
     protected SlotBase getSlot(int slotId, int x, int y) {
         return new SlotCropStick(getCart(), slotId, 8 + x * 18, 8 + y * 18);
     }
 
     @Override
     protected void Load(NBTTagCompound tagCompound, int id) {
-        harvestOptimal = tagCompound.getByte(generateNBTName("harvestOptimal", id)) == 1;
         super.Load(tagCompound, id);
+        harvestOptimal = tagCompound.getByte(generateNBTName("harvestOptimal", id)) == 1;
     }
 
     @Override
     protected void Save(NBTTagCompound tagCompound, int id) {
-        tagCompound.setBoolean(generateNBTName("harvestOptimal", id), harvestOptimal);
         super.Save(tagCompound, id);
+        tagCompound.setBoolean(generateNBTName("harvestOptimal", id), harvestOptimal);
     }
 
     @Override
@@ -225,18 +213,17 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
                 hasCropSticks = i;
             }
         }
-        if (hasCropSticks == -1) {
-            return false;
-        }
         if (!(seed.getItem() instanceof ItemCropSeed)) {
             return false;
         }
 
-        if (getCart().worldObj.isAirBlock(x, y, z) && getCart().worldObj.getBlock(x, y - 1, z) == Blocks.farmland) {
-            getCart().worldObj.setBlock(x, y, z, Block.getBlockFromItem(getStack(hasCropSticks).getItem()));
-            getStack(hasCropSticks).stackSize--;
-            if (getStack(hasCropSticks).stackSize <= 0) {
-                setStack(hasCropSticks, null);
+        if (hasCropSticks != -1) {
+            if (Block.getBlockFromItem(Ic2Items.crop.getItem()).canPlaceBlockAt(getCart().worldObj, x, y, z)) {
+                getCart().worldObj.setBlock(x, y, z, Block.getBlockFromItem(getStack(hasCropSticks).getItem()));
+                getStack(hasCropSticks).stackSize--;
+                if (getStack(hasCropSticks).stackSize <= 0) {
+                    setStack(hasCropSticks, null);
+                }
             }
         }
 
@@ -246,6 +233,11 @@ public class ModuleIC2Crops extends ModuleAddon implements ICropModule {
             return false;
         }
         return cc.canGrow((ICropTile) te) && ((ICropTile) te).getCrop() == null;
+    }
+
+    @Override
+    public World getWorld() {
+        return getCart().worldObj;
     }
 
 }

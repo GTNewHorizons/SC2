@@ -10,8 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.world.World;
 
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.Localization;
@@ -140,7 +139,7 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
             if (getStack(i) == null) {
                 continue;
             }
-            workingModule = isSeedValidHandler(getStack(i));
+            workingModule = getModuleFromSeed(getStack(i));
             if (workingModule == null) {
                 return false;
             }
@@ -175,9 +174,7 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
         if (isBroken()) {
             return false;
         }
-        Block block = getCart().worldObj.getBlock(x, y + 1, z);
-        int m = getCart().worldObj.getBlockMetadata(x, y + 1, z);
-        ICropModule workingCropModule = isReadyToHarvestHandler(x, y + 1, z);
+        ICropModule workingCropModule = getHarvestingModule(x, y + 1, z);
 
         if (workingCropModule == null) {
             return false;
@@ -226,7 +223,7 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
         return 25;
     }
 
-    public ICropModule isSeedValidHandler(ItemStack seed) {
+    public ICropModule getModuleFromSeed(ItemStack seed) {
         for (ICropModule module : plantModules) {
             if (module.isSeedValid(seed)) {
                 return module;
@@ -236,17 +233,7 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
         return null;
     }
 
-    protected Block getCropFromSeedHandler(ItemStack seed) {
-        for (ICropModule module : plantModules) {
-            if (module.isSeedValid(seed)) {
-                return module.getCropFromSeed(seed);
-            }
-        }
-
-        return null;
-    }
-
-    protected ICropModule isReadyToHarvestHandler(int x, int y, int z) {
+    protected ICropModule getHarvestingModule(int x, int y, int z) {
         for (ICropModule module : plantModules) {
             if (module.isReadyToHarvest(x, y, z)) {
                 return module;
@@ -358,7 +345,7 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
     public boolean haveSupplies() {
         for (int i = 0; i < getInventorySize(); i++) {
             ItemStack item = getStack(i);
-            if (item != null && isSeedValidHandler(item) != null) {
+            if (item != null && getModuleFromSeed(item) != null) {
                 return true;
             }
         }
@@ -366,27 +353,7 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
     }
 
     @Override
-    public ArrayList<ItemStack> harvestCrop(int x, int y, int z, int fortune) {
-        Block block = getCart().worldObj.getBlock(x, y, z);
-        int m = getCart().worldObj.getBlockMetadata(x, y, z);
-
-        getCart().worldObj.setBlockMetadataWithNotify(x, y, z, 0, 3);
-
-        return block.getDrops(getCart().worldObj, x, y, z, m, fortune);
-    }
-
-    @Override
-    public void placeCrop(int x, int y, int z, ItemStack seed) {
-        Block cropblock = getCropFromSeed(seed);
-        getCart().worldObj.setBlock(x, y, z, cropblock);
-    }
-
-    @Override
-    public boolean isSeedPlaceable(int x, int y, int z, ItemStack seed) {
-        Block soilblock = getCart().worldObj.getBlock(x, y - 1, z);
-        Block cropblock = getCropFromSeed(seed);
-        return cropblock != null && cropblock instanceof IPlantable
-                && getCart().worldObj.isAirBlock(x, y, z)
-                && soilblock.canSustainPlant(getCart().worldObj, x, y, z, ForgeDirection.UP, ((IPlantable) cropblock));
+    public World getWorld() {
+        return getCart().worldObj;
     }
 }
