@@ -1,6 +1,7 @@
 package vswe.stevescarts.Modules.Workers.Tools;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -9,8 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.world.World;
 
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Helpers.Localization;
@@ -129,114 +129,93 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
 
         Block soilblock = getCart().worldObj.getBlock(x, y, z);
 
-        if (soilblock != null) {
-
-            // check if there's any seeds to place
-            for (int i = 0; i < getInventorySize(); i++) {
-                // check if the slot contains seeds
-                if (getStack(i) != null) {
-                    if (isSeedValidHandler(getStack(i))) {
-
-                        Block cropblock = getCropFromSeedHandler(getStack(i));
-
-                        if (cropblock != null && cropblock instanceof IPlantable
-                                && getCart().worldObj.isAirBlock(x, y + 1, z)
-                                && soilblock.canSustainPlant(
-                                        getCart().worldObj,
-                                        x,
-                                        y,
-                                        z,
-                                        ForgeDirection.UP,
-                                        ((IPlantable) cropblock))) {
-                            hasSeeds = i;
-                            break;
-                        }
-
-                    }
-                }
+        if (soilblock == null) {
+            return false;
+        }
+        ICropModule workingModule = null;
+        // check if there's any seeds to place
+        for (int i = 0; i < getInventorySize(); i++) {
+            // check if the slot contains seeds
+            if (getStack(i) == null) {
+                continue;
+            }
+            workingModule = getModuleFromSeed(getStack(i));
+            if (workingModule == null) {
+                return false;
             }
 
-            if (hasSeeds != -1) {
-                if (doPreWork()) {
-                    startWorking(25);
-                    return true;
-                } else {
-                    stopWorking();
-
-                    Block cropblock = getCropFromSeedHandler(getStack(hasSeeds));
-
-                    getCart().worldObj.setBlock(x, y + 1, z, cropblock);
-
-                    getStack(hasSeeds).stackSize--;
-
-                    if (getStack(hasSeeds).stackSize <= 0) {
-                        setStack(hasSeeds, null);
-                    }
-
-                }
+            if (workingModule.isSeedPlaceable(x, y + 1, z, getStack(i))) {
+                hasSeeds = i;
+                break;
             }
         }
 
+        if (hasSeeds == -1) {
+            return false;
+        }
+
+        if (doPreWork()) {
+            startWorking(25);
+            return true;
+        }
+        stopWorking();
+
+        workingModule.placeCrop(x, y + 1, z, getStack(hasSeeds));
+
+        getStack(hasSeeds).stackSize--;
+
+        if (getStack(hasSeeds).stackSize <= 0) {
+            setStack(hasSeeds, null);
+        }
         return false;
     }
 
     protected boolean farm(int x, int y, int z) {
-        if (!isBroken()) {
-            Block block = getCart().worldObj.getBlock(x, y + 1, z);
-            int m = getCart().worldObj.getBlockMetadata(x, y + 1, z);
+        if (isBroken()) {
+            return false;
+        }
+        ICropModule workingCropModule = getHarvestingModule(x, y + 1, z);
 
-            if (isReadyToHarvestHandler(x, y + 1, z)) {
-                if (doPreWork()) {
-                    int efficiency = enchanter != null ? enchanter.getEfficiencyLevel() : 0;
-                    int workingtime = (int) (getBaseFarmingTime() / Math.pow(1.3F, efficiency));
-                    setFarming(workingtime * 4);
-                    startWorking(workingtime);
-                    return true;
-                } else {
-                    stopWorking();
+        if (workingCropModule == null) {
+            return false;
+        }
+        if (doPreWork()) {
+            int efficiency = enchanter != null ? enchanter.getEfficiencyLevel() : 0;
+            int workingtime = (int) (getBaseFarmingTime() / Math.pow(1.3F, efficiency));
+            setFarming(workingtime * 4);
+            startWorking(workingtime);
+            return true;
+        }
 
-                    ArrayList<ItemStack> stuff;
-                    if (shouldSilkTouch(block, x, y, z, m)) {
-                        stuff = new ArrayList<ItemStack>();
-                        ItemStack stack = getSilkTouchedItem(block, m);
-                        if (stack != null) {
-                            stuff.add(stack);
-                        }
-                    } else {
-                        int fortune = enchanter != null ? enchanter.getFortuneLevel() : 0;
-                        stuff = block.getDrops(getCart().worldObj, x, y + 1, z, m, fortune);
-                    }
+        stopWorking();
 
-                    for (ItemStack iStack : stuff) {
+        int fortune = enchanter != null ? enchanter.getFortuneLevel() : 0;
+        List<ItemStack> stuff = workingCropModule.harvestCrop(x, y + 1, z, fortune);
 
-                        // Extra drop rates same as Crop managers of same tier
-                        if (getCart().rand.nextFloat() <= 0.05 * (getCart().getCurrentEngine().getEngineTier() + 1)) {
-                            iStack.stackSize *= 2;
-                        }
+        for (ItemStack iStack : stuff) {
 
-                        getCart().addItemToChest(iStack);
+            // Extra drop rates same as Crop managers of same tier
+            if (getCart().rand.nextFloat() <= 0.05 * (getCart().getCurrentEngine().getEngineTier() + 1)) {
+                iStack.stackSize *= 2;
+            }
 
-                        if (iStack.stackSize != 0) {
-                            EntityItem entityitem = new EntityItem(
-                                    getCart().worldObj,
-                                    getCart().posX,
-                                    getCart().posY,
-                                    getCart().posZ,
-                                    iStack);
-                            entityitem.motionX = (float) (x - getCart().x()) / 10;
-                            entityitem.motionY = 0.15F;
-                            entityitem.motionZ = (float) (z - getCart().z()) / 10;
-                            getCart().worldObj.spawnEntityInWorld(entityitem);
-                        }
-                    }
+            getCart().addItemToChest(iStack);
 
-                    getCart().worldObj.setBlockToAir(x, y + 1, z);
-
-                    damageTool(3);
-                }
+            if (iStack.stackSize != 0) {
+                EntityItem entityitem = new EntityItem(
+                        getCart().worldObj,
+                        getCart().posX,
+                        getCart().posY,
+                        getCart().posZ,
+                        iStack);
+                entityitem.motionX = (float) (x - getCart().x()) / 10;
+                entityitem.motionY = 0.15F;
+                entityitem.motionZ = (float) (z - getCart().z()) / 10;
+                getCart().worldObj.spawnEntityInWorld(entityitem);
             }
         }
 
+        damageTool(3);
         return false;
     }
 
@@ -244,34 +223,24 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
         return 25;
     }
 
-    public boolean isSeedValidHandler(ItemStack seed) {
+    public ICropModule getModuleFromSeed(ItemStack seed) {
         for (ICropModule module : plantModules) {
             if (module.isSeedValid(seed)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    protected Block getCropFromSeedHandler(ItemStack seed) {
-        for (ICropModule module : plantModules) {
-            if (module.isSeedValid(seed)) {
-                return module.getCropFromSeed(seed);
+                return module;
             }
         }
 
         return null;
     }
 
-    protected boolean isReadyToHarvestHandler(int x, int y, int z) {
+    protected ICropModule getHarvestingModule(int x, int y, int z) {
         for (ICropModule module : plantModules) {
             if (module.isReadyToHarvest(x, y, z)) {
-                return true;
+                return module;
             }
         }
 
-        return false;
+        return null;
     }
 
     @Override
@@ -376,10 +345,15 @@ public abstract class ModuleFarmer extends ModuleTool implements ISuppliesModule
     public boolean haveSupplies() {
         for (int i = 0; i < getInventorySize(); i++) {
             ItemStack item = getStack(i);
-            if (item != null && isSeedValidHandler(item)) {
+            if (item != null && getModuleFromSeed(item) != null) {
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public World getWorld() {
+        return getCart().worldObj;
     }
 }

@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -55,6 +56,16 @@ public class ModuleModCrops extends ModuleAddon implements ICropModule {
             return false;
         }
 
+        // tb seeds need more work
+        if (uniqueIdentifier.modId.equals("thaumicbases")) {
+            return false;
+        }
+
+        // Natura crops don't work well with the SC2 approach
+        if (uniqueIdentifier.modId.equals("Natura")) {
+            return false;
+        }
+
         // witchery compatibility
         if (uniqueIdentifier.modId.equals("witchery")) {
             if (uniqueIdentifier.name.equals("garlicplant") && m == 5) {
@@ -72,4 +83,8 @@ public class ModuleModCrops extends ModuleAddon implements ICropModule {
         return false;
     }
 
+    @Override
+    public World getWorld() {
+        return getCart().worldObj;
+    }
 }

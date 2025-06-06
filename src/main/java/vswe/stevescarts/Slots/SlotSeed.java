@@ -15,7 +15,7 @@ public class SlotSeed extends SlotBase {
     }
 
     public boolean isItemValid(ItemStack itemstack) {
-        return module.isSeedValidHandler(itemstack);
+        return module.getModuleFromSeed(itemstack) != null;
     }
 
 }

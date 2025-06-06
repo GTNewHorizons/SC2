@@ -49,6 +49,7 @@ public class StevesCarts {
     public static boolean renderSteve = false;
     public static boolean arcadeDevOperator = false;
     public static final boolean isRailcraftLoaded = Loader.isModLoaded("Railcraft");
+    public static final boolean isIC2Loaded = Loader.isModLoaded("IC2");
 
     public static final String CHANNEL = "SC2";
 

@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 import vswe.stevescarts.Carts.MinecartModular;
 import vswe.stevescarts.Modules.Addons.ModuleAddon;
@@ -33,4 +34,8 @@ public class ModuleNetherwart extends ModuleAddon implements ICropModule {
         return b == Blocks.nether_wart && m == 3;
     }
 
+    @Override
+    public World getWorld() {
+        return getCart().worldObj;
+    }
 }
