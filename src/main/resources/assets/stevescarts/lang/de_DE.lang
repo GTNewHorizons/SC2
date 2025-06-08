@@ -486,7 +486,7 @@ info.SC2:impossibleCombinationError=Die Kombinationen der gegebenen Modultypen i
 info.SC2:complexityOverloadError=[%1] ist zu komplex für diese Hülle.
 info.SC2:missingParentError=[%1] benötigt [%2] um zu funktionieren!
 info.SC2:presentNemesisError=[%1] wird nicht mit [%2] funktionieren
-info.SC2:presentDuplicateError[%1] ist nicht zwei Mal erlaubt.
+info.SC2:presentDuplicateError=[%1] ist nicht zwei Mal erlaubt.
 info.SC2:sideClashError=[%1] und [%2] wird auf der [%3] Seite kollidieren.
 info.SC2:toolUnbreakable=Unzerstörbar
 info.SC2:toolDurability=Haltbarkeit: [%1]%

@@ -495,7 +495,7 @@ info.SC2:impossibleCombinationError=Комбинация типов модуле
 info.SC2:complexityOverloadError=Модуль "[%1]" слишком сложен для этого корпуса.
 info.SC2:missingParentError=Для работы [%1] необходим [%2]!
 info.SC2:presentNemesisError=[%1] не работает вместе с [%2]
-info.SC2:presentDuplicateError[%1] не может быть добавлен дважды.
+info.SC2:presentDuplicateError=[%1] не может быть добавлен дважды.
 info.SC2:sideClashError=[%1] и [%2] приведут к конфликту на [%3]
 info.SC2:toolUnbreakable=Неломаемый
 info.SC2:toolDurability=Прочность: [%1]%
