@@ -86,7 +86,7 @@ gui.SC2:transferAllLiquidShort=MAX
 gui.SC2:transferBucketShort=B
 
 # Module Toggler gui localization
-gui.SC2:moduleToggler:Module schakelaar
+gui.SC2:moduleToggler=Module schakelaar
 gui.SC2:optionDrill=Boor
 gui.SC2:optionShield=Schild
 gui.SC2:optionInvisibility=Onzichtbaarheid
@@ -495,7 +495,7 @@ info.SC2:impossibleCombinationError=De combinatie van de module types van de opg
 info.SC2:complexityOverloadError=[%1] is te complex voor dit Frame.
 info.SC2:missingParentError=[%1] vereist [%2] om te werken!
 info.SC2:presentNemesisError=[%1] werkt niet samen met [%2]
-info.SC2:presentDuplicateError[%1] mag niet twee keer worden toegepast.
+info.SC2:presentDuplicateError=[%1] mag niet twee keer worden toegepast.
 info.SC2:sideClashError=[%1] en [%2] geven een conflict op [%3]
 
 info.SC2:toolUnbreakable=Onbreekbaar

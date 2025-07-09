@@ -489,7 +489,7 @@ info.SC2:impossibleCombinationError=Kombinace techto modulu je neplatna. Toto by
 info.SC2:complexityOverloadError=[%1] je prilis slozity pro toto telo voziku.
 info.SC2:missingParentError=[%1] potrebuje [%2] k tomu aby mohl pracovat!
 info.SC2:presentNemesisError=[%1] nebude pracovat s [%2]
-info.SC2:presentDuplicateError[%1] Neni povolen aby tu byl dvakrat.
+info.SC2:presentDuplicateError=[%1] Neni povolen aby tu byl dvakrat.
 info.SC2:sideClashError=[%1] a [%2] se stretnou na [%3]
 info.SC2:toolUnbreakable=Neznicitelny
 info.SC2:toolDurability=Trvanlivost: [%1]%

@@ -495,7 +495,7 @@ info.SC2:impossibleCombinationError=Kombinationen af de valgte modulers typer er
 info.SC2:complexityOverloadError=[%1] er for kompleks til skroget.
 info.SC2:missingParentError=[%1] kræver [%2] for at virke!
 info.SC2:presentNemesisError=[%1] virker ikke med [%2]
-info.SC2:presentDuplicateError[%1] er ikke tilladt at blive tilføjet to gange.
+info.SC2:presentDuplicateError=[%1] er ikke tilladt at blive tilføjet to gange.
 info.SC2:sideClashError=[%1] og [%2] vil konflikte med [%3]
 #need beta 3 for these ones to show up (remove this note)
 info.SC2:toolUnbreakable=Ubrydelig

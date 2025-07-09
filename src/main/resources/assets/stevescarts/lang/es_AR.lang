@@ -490,7 +490,7 @@ info.SC2:impossibleCombinationError=La combinación de estos módulos no es vál
 info.SC2:complexityOverloadError=[%1] es demasidado complejo para este casco.
 info.SC2:missingParentError=[%1] requiere [%2] para funcionar!
 info.SC2:presentNemesisError=[%1] no funcionará con [%2]
-info.SC2:presentDuplicateError[%1] no tiene permitido ser añadido dos veces.
+info.SC2:presentDuplicateError=[%1] no tiene permitido ser añadido dos veces.
 info.SC2:sideClashError=[%1] y [%2] no irá junto a [%3]
 info.SC2:toolUnbreakable=Indestructible
 info.SC2:toolDurability=Durabilidad: [%1]%

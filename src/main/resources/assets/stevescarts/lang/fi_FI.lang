@@ -493,7 +493,7 @@ info.SC2:impossibleCombinationError=Annettujen moduulien yhdistelmä ei ole sopi
 info.SC2:complexityOverloadError=[%1] on liian monimutkainen tälle rungolle.
 info.SC2:missingParentError=[%1] tarvitsee [%2] toimiakseen!
 info.SC2:presentNemesisError=[%1] ei toimi [%2] kanssa.
-info.SC2:presentDuplicateError[%1] ei ole sallittu lisätä toista kertaa.
+info.SC2:presentDuplicateError=[%1] ei ole sallittu lisätä toista kertaa.
 info.SC2:sideClashError=[%1] ja [%2] yhteentörmää [%3]
 # need beta 3 for these ones to show up (remove this note)
 info.SC2:toolUnbreakable=Hajoamaton

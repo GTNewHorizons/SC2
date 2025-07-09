@@ -490,7 +490,7 @@ info.SC2:impossibleCombinationError=La combinazione dei tipi di moduli che hai i
 info.SC2:complexityOverloadError=[%1] e' troppo complesso per questa carena.
 info.SC2:missingParentError=[%1] richiede [%2] per funzionare!
 info.SC2:presentNemesisError=[%1] non funzionera' insieme a [%2]
-info.SC2:presentDuplicateError[%1] non si puo' aggiungere due volte.
+info.SC2:presentDuplicateError=[%1] non si puo' aggiungere due volte.
 info.SC2:sideClashError=[%1] e [%2] si scontreranno nel lato: [%3]
 
 

@@ -490,7 +490,7 @@ info.SC2:impossibleCombinationError=Kombinasjonen av modultyper av de gitte modu
 info.SC2:complexityOverloadError=[%1] er for kompleks for dette skroget.
 info.SC2:missingParentError=[%1] krever[%2] for å fungererk!
 info.SC2:presentNemesisError=[%1] vil ikke fungere med[%2]
-info.SC2:presentDuplicateError[%1] kan ikke bli lagt til to ganger.
+info.SC2:presentDuplicateError=[%1] kan ikke bli lagt til to ganger.
 info.SC2:sideClashError=[%1] og[%2] vil skape konflikt ved[%3]
 
 
