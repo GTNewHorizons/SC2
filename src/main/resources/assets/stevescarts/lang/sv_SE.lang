@@ -78,7 +78,7 @@ gui.SC2:transferAllLiquidShort=MAX
 gui.SC2:transferBucketShort=H
 
 # Module Toggler gui localization
-gui.SC2:moduleToggler:Modul på/av
+gui.SC2:moduleToggler=Modul på/av
 gui.SC2:optionDrill=Borr
 gui.SC2:optionShield=Sköld
 gui.SC2:optionInvisibility=Osynlighet
@@ -489,7 +489,7 @@ info.SC2:impossibleCombinationError=Kombinationen av de giva modulernas modultyp
 info.SC2:complexityOverloadError=[%1] är för komplext för detta skrov.
 info.SC2:missingParentError=[%1] kräver [%2] för att fungera!
 info.SC2:presentNemesisError=[%1] kommer ej funka med [%2]
-info.SC2:presentDuplicateError[%1] får ej läggas till flera gånger.
+info.SC2:presentDuplicateError=[%1] får ej läggas till flera gånger.
 info.SC2:sideClashError=[%1] och [%2] kommer krocka vid [%3]
 info.SC2:toolUnbreakable=Oförstörbar
 info.SC2:toolDurability=Hållbarhet: [%1]%
