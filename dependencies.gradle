@@ -5,9 +5,9 @@ dependencies {
     compileOnly("net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev")
 
     // Fixes Carts not spawning (Entity ID get set to a bad value without)
-    runtimeOnlyNonPublishable("com.github.GTNewHorizons:CoreTweaks:0.3.3.4-GTNH:dev")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:CoreTweaks:0.3.3.6-GTNH:dev")
 
-    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.57-GTNH:dev")
+    runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.62-GTNH:dev")
 
     // For testing RC integration
     //runtimeOnlyNonPublishable("com.github.GTNewHorizons:Railcraft:9.16.30")
