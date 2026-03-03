@@ -93,6 +93,11 @@ public enum ComponentTypes {
     IRON_BLADE(83, "Iron Blade"),
     BLADE_ARM(84, "Blade Arm");
 
+    /*
+     Cached values() call for frequent read-only operations
+     DO NOT USE if you intend to modify the array (i.e. sorting the array)
+     */
+    public static final ComponentTypes[] VALUES = values();
     private int id;
     private String name;
 
