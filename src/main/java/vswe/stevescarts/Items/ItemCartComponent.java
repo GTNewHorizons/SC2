@@ -25,7 +25,7 @@ public class ItemCartComponent extends Item {
     private IIcon unknownIcon;
 
     public static int size() {
-        return ComponentTypes.values().length;
+        return ComponentTypes.VALUES.length;
     }
 
     public ItemCartComponent() {
@@ -36,7 +36,7 @@ public class ItemCartComponent extends Item {
     }
 
     private String getName(int dmg) {
-        return ComponentTypes.values()[dmg].getName();
+        return ComponentTypes.VALUES[dmg].getName();
     }
 
     public String getName(ItemStack par1ItemStack) {
