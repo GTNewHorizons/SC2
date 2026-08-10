@@ -72,7 +72,7 @@ public class OperatorObject {
         // Note that IDs are also used by the specific types, the next ID here shouldn't be 11, that one is already in
         // use.
 
-        for (DetectorType type : DetectorType.values()) {
+        for (DetectorType type : DetectorType.VALUES) {
             type.initOperators(new HashMap<Byte, OperatorObject>(operators));
         }
     }

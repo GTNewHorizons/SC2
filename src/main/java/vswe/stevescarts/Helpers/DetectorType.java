@@ -80,6 +80,8 @@ public enum DetectorType {
 
     };
 
+    public static final DetectorType[] VALUES = values();
+
     private int meta;
     private String[] textures;
     private IIcon[] icons;
@@ -138,7 +140,7 @@ public enum DetectorType {
     }
 
     public static DetectorType getTypeFromMeta(int meta) {
-        return values()[meta & 7];
+        return VALUES[meta & 7];
     }
 
     public void initOperators(HashMap<Byte, OperatorObject> operators) {

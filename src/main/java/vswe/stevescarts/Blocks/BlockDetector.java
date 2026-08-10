@@ -37,14 +37,14 @@ public class BlockDetector extends BlockContainerBase {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister register) {
-        for (DetectorType type : DetectorType.values()) {
+        for (DetectorType type : DetectorType.VALUES) {
             type.registerIcons(register);
         }
     }
 
     @Override
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-        for (DetectorType type : DetectorType.values()) {
+        for (DetectorType type : DetectorType.VALUES) {
             list.add(new ItemStack(item, 1, type.getMeta()));
         }
     }

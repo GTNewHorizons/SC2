@@ -80,7 +80,7 @@ public final class ModItems {
             GameRegistry.registerCustomItemStack(upgradeStack.getUnlocalizedName(), upgradeStack);
         }
 
-        for (DetectorType type : DetectorType.values()) {
+        for (DetectorType type : DetectorType.VALUES) {
             ItemStack stack = new ItemStack(detectors, 1, type.getMeta());
             GameRegistry.registerCustomItemStack(stack.getUnlocalizedName(), stack);
         }
